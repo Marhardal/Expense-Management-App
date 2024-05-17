@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expense Management App", "Expense Management App\Expense Management App.csproj", "{D78551F0-0230-4A95-BDFC-35888B64ECF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D78551F0-0230-4A95-BDFC-35888B64ECF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D78551F0-0230-4A95-BDFC-35888B64ECF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D78551F0-0230-4A95-BDFC-35888B64ECF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D78551F0-0230-4A95-BDFC-35888B64ECF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1282CD5A-0EA6-47CA-82A7-30510CB905E2}
+	EndGlobalSection
+EndGlobal
