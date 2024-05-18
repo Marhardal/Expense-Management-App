@@ -16,5 +16,48 @@ namespace Expense_Management_App
         {
             InitializeComponent();
         }
+
+        private void homebtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Home");
+            headerlbl.Text = "Home";
+        }
+
+        private void incomebtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Income");
+            headerlbl.Text = "Income";
+        }
+
+        private void budgetbtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Budget");
+        }
+
+        private void expensebtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Expense");
+        }
+
+        private void reportsbtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Report");
+        }
+
+        private void transbtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Transaction");
+        }
+
+        private void notibtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Notification");
+        }
+
+        private void setibtn_Click(object sender, EventArgs e)
+        {
+            pages.SetPage("Setting");
+        }
+
     }
 }
