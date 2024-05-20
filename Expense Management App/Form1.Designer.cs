@@ -35,9 +35,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,6 +59,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Income = new System.Windows.Forms.TabPage();
+            this.incomedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.sourcebtn = new Guna.UI.WinForms.GunaButton();
             this.deleteincomebtn = new Guna.UI.WinForms.GunaButton();
@@ -98,7 +99,6 @@
             this.expensebtn = new Guna.UI.WinForms.GunaButton();
             this.incomebtn = new Guna.UI.WinForms.GunaButton();
             this.homebtn = new Guna.UI.WinForms.GunaButton();
-            this.incomedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1.SuspendLayout();
             this.pages.SuspendLayout();
             this.Home.SuspendLayout();
@@ -111,6 +111,7 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.Income.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).BeginInit();
             this.Budget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.Expense.SuspendLayout();
@@ -119,7 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -387,6 +387,42 @@
             this.Income.TabIndex = 1;
             this.Income.Text = "Income";
             // 
+            // incomedgv
+            // 
+            this.incomedgv.AllowUserToAddRows = false;
+            this.incomedgv.AllowUserToDeleteRows = false;
+            this.incomedgv.AllowUserToOrderColumns = true;
+            this.incomedgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.incomedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.incomedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.incomedgv.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.incomedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.incomedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.incomedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.incomedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.incomedgv.DoubleBuffered = true;
+            this.incomedgv.EnableHeadersVisualStyles = false;
+            this.incomedgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.incomedgv.HeaderForeColor = System.Drawing.Color.White;
+            this.incomedgv.Location = new System.Drawing.Point(9, 95);
+            this.incomedgv.MultiSelect = false;
+            this.incomedgv.Name = "incomedgv";
+            this.incomedgv.ReadOnly = true;
+            this.incomedgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.incomedgv.RowHeadersWidth = 51;
+            this.incomedgv.RowTemplate.Height = 24;
+            this.incomedgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.incomedgv.Size = new System.Drawing.Size(1110, 683);
+            this.incomedgv.TabIndex = 9;
+            // 
             // bunifuMaterialTextbox1
             // 
             this.bunifuMaterialTextbox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
@@ -435,6 +471,7 @@
             this.sourcebtn.TabIndex = 4;
             this.sourcebtn.Text = "Source";
             this.sourcebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.sourcebtn.Click += new System.EventHandler(this.sourcebtn_Click);
             // 
             // deleteincomebtn
             // 
@@ -485,6 +522,7 @@
             this.updateincomebtn.TabIndex = 2;
             this.updateincomebtn.Text = "Update";
             this.updateincomebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.updateincomebtn.Click += new System.EventHandler(this.updateincomebtn_Click);
             // 
             // addincomebtn
             // 
@@ -1201,42 +1239,6 @@
             this.homebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.homebtn.Click += new System.EventHandler(this.homebtn_Click);
             // 
-            // incomedgv
-            // 
-            this.incomedgv.AllowUserToAddRows = false;
-            this.incomedgv.AllowUserToDeleteRows = false;
-            this.incomedgv.AllowUserToOrderColumns = true;
-            this.incomedgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.incomedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.incomedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.incomedgv.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.incomedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.incomedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.incomedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.incomedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.incomedgv.DoubleBuffered = true;
-            this.incomedgv.EnableHeadersVisualStyles = false;
-            this.incomedgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            this.incomedgv.HeaderForeColor = System.Drawing.Color.White;
-            this.incomedgv.Location = new System.Drawing.Point(9, 95);
-            this.incomedgv.MultiSelect = false;
-            this.incomedgv.Name = "incomedgv";
-            this.incomedgv.ReadOnly = true;
-            this.incomedgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.incomedgv.RowHeadersWidth = 51;
-            this.incomedgv.RowTemplate.Height = 24;
-            this.incomedgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.incomedgv.Size = new System.Drawing.Size(1110, 683);
-            this.incomedgv.TabIndex = 9;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1266,6 +1268,7 @@
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.Income.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).EndInit();
             this.Budget.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.Expense.ResumeLayout(false);
@@ -1275,7 +1278,6 @@
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

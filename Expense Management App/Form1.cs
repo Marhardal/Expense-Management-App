@@ -100,5 +100,16 @@ namespace Expense_Management_App
         {
 
         }
+
+        private void sourcebtn_Click(object sender, EventArgs e)
+        {
+            Source source = new Source();
+            source.Show();
+        }
+
+        private void updateincomebtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
