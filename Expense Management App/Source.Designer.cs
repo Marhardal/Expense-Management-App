@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Source));
             this.label1 = new System.Windows.Forms.Label();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
@@ -77,20 +77,20 @@
             this.sourcedgv.AllowUserToDeleteRows = false;
             this.sourcedgv.AllowUserToOrderColumns = true;
             this.sourcedgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.sourcedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.sourcedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.sourcedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.sourcedgv.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.sourcedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.sourcedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sourcedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sourcedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.sourcedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sourcedgv.DoubleBuffered = true;
             this.sourcedgv.EnableHeadersVisualStyles = false;
@@ -259,7 +259,7 @@
             this.cancelbtn.ImageSize = new System.Drawing.Size(20, 20);
             this.cancelbtn.Location = new System.Drawing.Point(245, 612);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.cancelbtn.OnHoverBaseColor = System.Drawing.Color.DarkRed;
             this.cancelbtn.OnHoverBorderColor = System.Drawing.Color.Black;
             this.cancelbtn.OnHoverForeColor = System.Drawing.Color.White;
             this.cancelbtn.OnHoverImage = null;
@@ -302,9 +302,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 550);
-            this.Controls.Add(this.gunaButton2);
             this.Controls.Add(this.cancelbtn);
-            this.Controls.Add(this.gunaButton1);
             this.Controls.Add(this.nametxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.deleteincomebtn);
@@ -313,6 +311,8 @@
             this.Controls.Add(this.sourcedgv);
             this.Controls.Add(this.gunaControlBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.gunaButton2);
+            this.Controls.Add(this.gunaButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Source";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

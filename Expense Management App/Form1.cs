@@ -21,14 +21,14 @@ namespace Expense_Management_App
 
         SQLiteConnection connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["lite"].ToString());
 
-        void getroles()
+        void getincome()
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "Select * from Role";
+                    string select = "Select * from income";
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                     DataTable dataTable = new DataTable();
@@ -58,7 +58,7 @@ namespace Expense_Management_App
 
         private void incomebtn_Click(object sender, EventArgs e)
         {
-            getroles();
+            getincome();
             pages.SetPage("Income");
             headerlbl.Text = "Income";
         }
@@ -109,7 +109,55 @@ namespace Expense_Management_App
 
         private void updateincomebtn_Click(object sender, EventArgs e)
         {
+            Income income = new Income();
+            income.amounttxt.Text = incomedgv.CurrentRow.Cells[2].Value.ToString();
+            income.sourcecmd.SelectedValue = incomedgv.CurrentRow.Cells[1].Value.ToString();
+            income.id = incomedgv.CurrentRow.Cells[0].Value.ToString();
+            income.gunaButton2.Visible = true;
+            income.gunaButton2.BringToFront();
+            income.Show();
+        }
 
+        private void addincomebtn_Click(object sender, EventArgs e)
+        {
+            Income income = new Income();
+            income.Show();
+        }
+
+        private void deleteincomebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string insert = "Delete from Income where ID=@id";
+                    if (incomedgv.CurrentRow.Cells[1].Value.ToString() != null || incomedgv.CurrentRow.Cells[1].Value.ToString() != "0")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete the Income Source?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SQLiteCommand command = new SQLiteCommand(insert, connection);
+                            command.Parameters.Add(new SQLiteParameter("@id", incomedgv.CurrentRow.Cells[0].Value.ToString()));
+                            var execute = command.ExecuteNonQuery();
+                            if (execute > 0)
+                            {
+                                MessageBox.Show("Income source deleted.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to deleted an income source.");
+                            }
+                        }
+                    }
+                    connection.Close();
+                    getincome();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
         }
     }
 }

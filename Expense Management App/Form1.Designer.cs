@@ -497,6 +497,7 @@
             this.deleteincomebtn.TabIndex = 3;
             this.deleteincomebtn.Text = "Delete";
             this.deleteincomebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.deleteincomebtn.Click += new System.EventHandler(this.deleteincomebtn_Click);
             // 
             // updateincomebtn
             // 
@@ -548,6 +549,7 @@
             this.addincomebtn.TabIndex = 1;
             this.addincomebtn.Text = "Create";
             this.addincomebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.addincomebtn.Click += new System.EventHandler(this.addincomebtn_Click);
             // 
             // Budget
             // 
