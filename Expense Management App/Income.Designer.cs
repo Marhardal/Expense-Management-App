@@ -210,15 +210,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 305);
-            this.Controls.Add(this.gunaButton2);
             this.Controls.Add(this.sourcecmd);
             this.Controls.Add(this.cancelbtn);
-            this.Controls.Add(this.addincomebtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amounttxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.addincomebtn);
+            this.Controls.Add(this.gunaButton2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Income";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

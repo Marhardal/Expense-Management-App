@@ -202,7 +202,7 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string query = "SELECT * FROM incomes WHERE Date like '%" + incometxt.Text + "%' or Salary like '%" + incometxt.Text + "%' ORDER BY Date desc";
+                    string query = "SELECT * FROM incomes WHERE Date like '%" + incometxt.Text + "%' or amount like '%" + incometxt.Text + "%' ORDER BY Date desc";
                     DataTable dataTable = new DataTable();
                     SQLiteCommand com = new SQLiteCommand(query, connection);
                     SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
@@ -229,6 +229,90 @@ namespace Expense_Management_App
         {
             Category category = new Category();
             category.Show();
+        }
+
+        private void addexpensebtn_Click(object sender, EventArgs e)
+        {
+            Expense expense = new Expense();
+            expense.Show();
+        }
+
+        private void updateexpensebtn_Click(object sender, EventArgs e)
+        {
+            Expense expense = new Expense();
+            expense.nametxt.Text = expensedgv.CurrentRow.Cells[2].Value.ToString();
+            expense.amounttxt.Text = expensedgv.CurrentRow.Cells[3].Value.ToString();
+            expense.sourcecmd.SelectedValue = expensedgv.CurrentRow.Cells[1].Value.ToString();
+            expense.id = expensedgv.CurrentRow.Cells[0].Value.ToString();
+            expense.gunaButton2.Visible = true;
+            expense.gunaButton2.BringToFront();
+            expense.Show();
+        }
+
+        private void deleteexpensebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string insert = "Delete from expense where ID=@id";
+                    if (expensedgv.CurrentRow.Cells[1].Value.ToString() != null || expensedgv.CurrentRow.Cells[1].Value.ToString() != "0")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete an expense?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SQLiteCommand command = new SQLiteCommand(insert, connection);
+                            command.Parameters.Add(new SQLiteParameter("@id", expensedgv.CurrentRow.Cells[0].Value.ToString()));
+                            var execute = command.ExecuteNonQuery();
+                            if (execute > 0)
+                            {
+                                MessageBox.Show("Expense deleted.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to deleted an Expense.");
+                            }
+                        }
+                    }
+                    connection.Close();
+                    getincome();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
+        }
+
+        private void expensetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM expenses WHERE Date like '%" + expensetxt.Text + "%' or Amount like '%" + expensetxt.Text + "%' or Category like '%" + expensetxt.Text + "%' or Name like '%" + expensetxt.Text + "%' ORDER BY Date desc";
+                    DataTable dataTable = new DataTable();
+                    SQLiteCommand com = new SQLiteCommand(query, connection);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
+                    sda.Fill(dataTable);
+                    expensedgv.DataSource = dataTable;
+                    dataTable.Dispose();
+                    sda.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                throw;
+            }
+        }
+
+        private void expensetxt_Leave(object sender, EventArgs e)
+        {
+            getexpense();
         }
     }
 }

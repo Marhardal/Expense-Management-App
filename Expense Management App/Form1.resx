@@ -672,7 +672,7 @@
         AEGkHn2dUHMMAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="gunaButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="deleteexpensebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAABGdBTUEAALGPC/xhBQAADkZJREFUeF7t
         m83L5nUVh+2Z26coUCsoEgyiRVH9Bb1seiGyVglCBhZIGkEFLaIXWrWJSLEkKqg2LdoaQqSLFhW1UCOw
@@ -739,7 +739,7 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="gunaButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="updateexpensebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAGCtJREFUeF7t
         3VuoretdHvDsscdc0YiHaCRLqwQ1eFEv6oHSBqFUo6jReIIIilUQ2wvBQ4UmpSjUULCISqEemoC9KkYU
@@ -848,7 +848,7 @@
         o/rHGeqiqBkAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="gunaButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="addexpensebtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAABZZJREFUeF7t
         nd+rFVUUx2/nHI9Yair9fsheCqr/Qb2m0A9CKqOHxId+Egj1VtCLb6X9VEGCoAcfJQjKlyKCiB6SWykV
