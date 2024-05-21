@@ -28,7 +28,7 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "Select * from income";
+                    string select = "Select * from incomes";
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                     DataTable dataTable = new DataTable();
@@ -158,6 +158,41 @@ namespace Expense_Management_App
             {
                 MessageBox.Show("Encountered an error " + error.Message);
             }
+        }
+
+        private void incometxt_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void incometxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM incomes WHERE Date like '%" + incometxt.Text + "%' or Salary like '%" + incometxt.Text + "%' ORDER BY Date desc";
+                    DataTable dataTable = new DataTable();
+                    SQLiteCommand com = new SQLiteCommand(query, connection);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
+                    sda.Fill(dataTable);
+                    incomedgv.DataSource = dataTable;
+                    dataTable.Dispose();
+                    sda.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                throw;
+            }
+        }
+
+        private void incometxt_Leave(object sender, EventArgs e)
+        {
+            getincome();
         }
     }
 }

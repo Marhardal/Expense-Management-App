@@ -60,7 +60,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.Income = new System.Windows.Forms.TabPage();
             this.incomedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.incometxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.sourcebtn = new Guna.UI.WinForms.GunaButton();
             this.deleteincomebtn = new Guna.UI.WinForms.GunaButton();
             this.updateincomebtn = new Guna.UI.WinForms.GunaButton();
@@ -375,7 +375,7 @@
             // 
             this.Income.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Income.Controls.Add(this.incomedgv);
-            this.Income.Controls.Add(this.bunifuMaterialTextbox1);
+            this.Income.Controls.Add(this.incometxt);
             this.Income.Controls.Add(this.sourcebtn);
             this.Income.Controls.Add(this.deleteincomebtn);
             this.Income.Controls.Add(this.updateincomebtn);
@@ -423,29 +423,32 @@
             this.incomedgv.Size = new System.Drawing.Size(1110, 683);
             this.incomedgv.TabIndex = 9;
             // 
-            // bunifuMaterialTextbox1
+            // incometxt
             // 
-            this.bunifuMaterialTextbox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.bunifuMaterialTextbox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.bunifuMaterialTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bunifuMaterialTextbox1.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.bunifuMaterialTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMaterialTextbox1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMaterialTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMaterialTextbox1.HintForeColor = System.Drawing.Color.DimGray;
-            this.bunifuMaterialTextbox1.HintText = "Search for an Income.";
-            this.bunifuMaterialTextbox1.isPassword = false;
-            this.bunifuMaterialTextbox1.LineFocusedColor = System.Drawing.Color.Blue;
-            this.bunifuMaterialTextbox1.LineIdleColor = System.Drawing.Color.Gray;
-            this.bunifuMaterialTextbox1.LineMouseHoverColor = System.Drawing.Color.Blue;
-            this.bunifuMaterialTextbox1.LineThickness = 3;
-            this.bunifuMaterialTextbox1.Location = new System.Drawing.Point(9, 53);
-            this.bunifuMaterialTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMaterialTextbox1.MaxLength = 32767;
-            this.bunifuMaterialTextbox1.Name = "bunifuMaterialTextbox1";
-            this.bunifuMaterialTextbox1.Size = new System.Drawing.Size(379, 35);
-            this.bunifuMaterialTextbox1.TabIndex = 8;
-            this.bunifuMaterialTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.incometxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.incometxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.incometxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.incometxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.incometxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.incometxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.incometxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.incometxt.HintForeColor = System.Drawing.Color.DimGray;
+            this.incometxt.HintText = "Search for an Income.";
+            this.incometxt.isPassword = false;
+            this.incometxt.LineFocusedColor = System.Drawing.Color.Blue;
+            this.incometxt.LineIdleColor = System.Drawing.Color.Gray;
+            this.incometxt.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.incometxt.LineThickness = 3;
+            this.incometxt.Location = new System.Drawing.Point(9, 53);
+            this.incometxt.Margin = new System.Windows.Forms.Padding(4);
+            this.incometxt.MaxLength = 32767;
+            this.incometxt.Name = "incometxt";
+            this.incometxt.Size = new System.Drawing.Size(379, 35);
+            this.incometxt.TabIndex = 8;
+            this.incometxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.incometxt.Enter += new System.EventHandler(this.incometxt_Enter);
+            this.incometxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.incometxt_KeyPress);
+            this.incometxt.Leave += new System.EventHandler(this.incometxt_Leave);
             // 
             // sourcebtn
             // 
@@ -1326,7 +1329,7 @@
         private System.Windows.Forms.TabPage Transaction;
         private System.Windows.Forms.TabPage Notification;
         private System.Windows.Forms.TabPage Setting;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox incometxt;
         private Guna.UI.WinForms.GunaButton sourcebtn;
         private Guna.UI.WinForms.GunaButton deleteincomebtn;
         private Guna.UI.WinForms.GunaButton updateincomebtn;
