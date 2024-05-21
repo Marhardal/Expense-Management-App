@@ -69,8 +69,38 @@ namespace Expense_Management_App
             headerlbl.Text = "Budget";
         }
 
+        void getexpense()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "Select * from expenses";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        expensedgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to the database is closed");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void expensebtn_Click(object sender, EventArgs e)
         {
+            getexpense();
             pages.SetPage("Expense");
             headerlbl.Text = "Expense";
         }
@@ -193,6 +223,12 @@ namespace Expense_Management_App
         private void incometxt_Leave(object sender, EventArgs e)
         {
             getincome();
+        }
+
+        private void categorybtn_Click(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            category.Show();
         }
     }
 }

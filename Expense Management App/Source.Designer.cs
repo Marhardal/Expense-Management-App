@@ -311,8 +311,8 @@
             this.Controls.Add(this.sourcedgv);
             this.Controls.Add(this.gunaControlBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gunaButton2);
             this.Controls.Add(this.gunaButton1);
+            this.Controls.Add(this.gunaButton2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Source";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
