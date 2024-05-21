@@ -28,23 +28,32 @@ namespace Expense_Management_App
 
         private void addincomebtn_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(DateTime.Now.ToString("dd-MMMM-yyyy"));
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Insert into income Values(NULL, @source, @amount, '" + DateTime.Now.ToShortDateString() +"')";
-                    SQLiteCommand command = new SQLiteCommand(insert, connection);
-                    command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
-                    command.Parameters.Add(new SQLiteParameter("@source", sourcecmd.SelectedValue));
-                    var execute = command.ExecuteNonQuery();
-                    if (execute > 0)
+                    if (amounttxt.Text != "")
                     {
-                        MessageBox.Show("New Income Added.");
+                        string insert = "Insert into income Values(NULL, @source, @amount, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
+                        SQLiteCommand command = new SQLiteCommand(insert, connection);
+                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
+                        command.Parameters.Add(new SQLiteParameter("@source", sourcecmd.SelectedValue));
+                        var execute = command.ExecuteNonQuery();
+                        if (execute > 0)
+                        {
+                            MessageBox.Show("New Income Added.");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to create an Income.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Failed to create an Income.");
+                        MessageBox.Show("Please fill in all fields");
                     }
                     connection.Close();
                 }
@@ -53,7 +62,6 @@ namespace Expense_Management_App
             {
                 MessageBox.Show("Encountered an error " + error.Message);
             }
-            Close();
         }
 
         internal string id;
