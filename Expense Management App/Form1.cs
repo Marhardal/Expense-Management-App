@@ -306,7 +306,7 @@ namespace Expense_Management_App
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-                throw;
+                //throw;
             }
         }
 
