@@ -63,8 +63,38 @@ namespace Expense_Management_App
             headerlbl.Text = "Income";
         }
 
+        void getbudget()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "Select * from budget";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        budgetdgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to the database is closed");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void budgetbtn_Click(object sender, EventArgs e)
         {
+            getbudget();
             pages.SetPage("Budget");
             headerlbl.Text = "Budget";
         }
@@ -227,56 +257,76 @@ namespace Expense_Management_App
 
         private void categorybtn_Click(object sender, EventArgs e)
         {
-            Category category = new Category();
-            category.Show();
+            
         }
 
         private void addexpensebtn_Click(object sender, EventArgs e)
         {
-            Expense expense = new Expense();
-            expense.Show();
+            
         }
 
         private void updateexpensebtn_Click(object sender, EventArgs e)
         {
-            Expense expense = new Expense();
-            expense.nametxt.Text = expensedgv.CurrentRow.Cells[2].Value.ToString();
-            expense.amounttxt.Text = expensedgv.CurrentRow.Cells[3].Value.ToString();
-            expense.sourcecmd.SelectedValue = expensedgv.CurrentRow.Cells[1].Value.ToString();
-            expense.id = expensedgv.CurrentRow.Cells[0].Value.ToString();
-            expense.gunaButton2.Visible = true;
-            expense.gunaButton2.BringToFront();
-            expense.Show();
+            
         }
 
         private void deleteexpensebtn_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void expensetxt_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void addbudgetdgv_Click(object sender, EventArgs e)
+        {
+            Budget budget = new Budget();
+            budget.Show();
+        }
+
+        private void updatebudgetbtn_Click(object sender, EventArgs e)
+        {
+            Budget budget = new Budget();
+            budget.nametxt.Text = budgetdgv.CurrentRow.Cells[2].Value.ToString();
+            budget.amounttxt.Text = budgetdgv.CurrentRow.Cells[3].Value.ToString();
+            budget.desctxt.Text = budgetdgv.CurrentRow.Cells[4].Value.ToString();
+            budget.duedatedtp.Value = Convert.ToDateTime(budgetdgv.CurrentRow.Cells[6].Value);
+            budget.id = budgetdgv.CurrentRow.Cells[0].Value.ToString();
+            budget.gunaButton2.Visible = true;
+            budget.gunaButton2.BringToFront();
+            budget.Show();
+        }
+
+        private void deletebudgetbtn_Click(object sender, EventArgs e)
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Delete from expense where ID=@id";
-                    if (expensedgv.CurrentRow.Cells[1].Value.ToString() != null || expensedgv.CurrentRow.Cells[1].Value.ToString() != "0")
+                    string insert = "Delete from budget where ID=@id";
+                    if (budgetdgv.CurrentRow.Cells[0].Value.ToString() != null || budgetdgv.CurrentRow.Cells[0].Value.ToString() != "0")
                     {
-                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete an expense?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete a Budget?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (dialogResult == DialogResult.Yes)
                         {
                             SQLiteCommand command = new SQLiteCommand(insert, connection);
-                            command.Parameters.Add(new SQLiteParameter("@id", expensedgv.CurrentRow.Cells[0].Value.ToString()));
+                            command.Parameters.Add(new SQLiteParameter("@id", budgetdgv.CurrentRow.Cells[0].Value.ToString()));
                             var execute = command.ExecuteNonQuery();
                             if (execute > 0)
                             {
-                                MessageBox.Show("Expense deleted.");
+                                MessageBox.Show("Budget deleted.");
                             }
                             else
                             {
-                                MessageBox.Show("Failed to deleted an Expense.");
+                                MessageBox.Show("Failed to deleted a Budget.");
                             }
                         }
                     }
                     connection.Close();
-                    getincome();
+                    getbudget();
                 }
             }
             catch (Exception error)
@@ -285,19 +335,19 @@ namespace Expense_Management_App
             }
         }
 
-        private void expensetxt_KeyPress(object sender, KeyPressEventArgs e)
+        private void budgettxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string query = "SELECT * FROM expenses WHERE Date like '%" + expensetxt.Text + "%' or Amount like '%" + expensetxt.Text + "%' or Category like '%" + expensetxt.Text + "%' or Name like '%" + expensetxt.Text + "%' ORDER BY Date desc";
+                    string query = "SELECT * FROM budget WHERE [Due Date] like '%" + budgettxt.Text + "%' or amount like '%" + budgettxt.Text + "%' or Name like '%" + budgettxt.Text + "%' ORDER BY Date desc";
                     DataTable dataTable = new DataTable();
                     SQLiteCommand com = new SQLiteCommand(query, connection);
                     SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
                     sda.Fill(dataTable);
-                    expensedgv.DataSource = dataTable;
+                    budgetdgv.DataSource = dataTable;
                     dataTable.Dispose();
                     sda.Dispose();
                     connection.Close();
@@ -306,13 +356,15 @@ namespace Expense_Management_App
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-                //throw;
+                throw;
             }
         }
 
-        private void expensetxt_Leave(object sender, EventArgs e)
+        private void expensesviewbtn_Click(object sender, EventArgs e)
         {
-            getexpense();
+            Expense expense = new Expense();
+            expense.id = budgetdgv.CurrentRow.Cells[0].Value.ToString();
+            expense.Show();
         }
     }
 }

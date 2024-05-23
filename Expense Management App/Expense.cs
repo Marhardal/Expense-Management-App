@@ -21,59 +21,22 @@ namespace Expense_Management_App
 
         SQLiteConnection connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["lite"].ToString());
 
-        private void addExpensebtn_Click(object sender, EventArgs e)
+        void getexpense()
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    if (amounttxt.Text != "")
-                    {
-                        string insert = "Insert into expense Values(NULL, @category, @name, @amount, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
-                        SQLiteCommand command = new SQLiteCommand(insert, connection);
-                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
-                        command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
-                        command.Parameters.Add(new SQLiteParameter("@category", sourcecmd.SelectedValue));
-                        var execute = command.ExecuteNonQuery();
-                        if (execute > 0)
-                        {
-                            MessageBox.Show("New Expense Added.");
-                            Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to create an Expense.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please fill in all fields");
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Encountered an error " + error.Message);
-            }
-        }
-
-        void getcategory()
-        {
-            try
-            {
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                    string select = "Select * from category";
+                    string select = "Select * from expenses where [Budget ID] = " + id;
                     SQLiteCommand command = new SQLiteCommand(select, connection);
-                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                     DataTable dataTable = new DataTable();
-                    dataTable.Load(dataReader);
-                    sourcecmd.DisplayMember = "Name";
-                    sourcecmd.ValueMember = "ID";
-                    sourcecmd.DataSource = dataTable;
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        expensedgv.DataSource = dataTable;
+                    }
                     connection.Close();
                 }
                 else
@@ -87,52 +50,90 @@ namespace Expense_Management_App
             }
         }
 
-        private void Expense_Load(object sender, EventArgs e)
+        private void categorybtn_Click(object sender, EventArgs e)
         {
-            getcategory();
+            Category category = new Category();
+            category.Show();
         }
 
-        private void cancelbtn_Click(object sender, EventArgs e)
+        private void addexpensebtn_Click(object sender, EventArgs e)
         {
-            Close();
+            Upsertexpense expense = new Upsertexpense();
+            expense.id = id;
+            expense.Show();
         }
 
         internal string id;
 
-        private void gunaButton2_Click(object sender, EventArgs e)
+        private void updateexpensebtn_Click(object sender, EventArgs e)
+        {
+            Upsertexpense expense = new Upsertexpense();
+            expense.nametxt.Text = expensedgv.CurrentRow.Cells[2].Value.ToString();
+            expense.amounttxt.Text = expensedgv.CurrentRow.Cells[3].Value.ToString();
+            expense.sourcecmd.SelectedValue = expensedgv.CurrentRow.Cells[1].Value.ToString();
+            expense.id = expensedgv.CurrentRow.Cells[0].Value.ToString();
+            expense.gunaButton2.Visible = true;
+            expense.gunaButton2.BringToFront();
+            expense.Show();
+        }
+
+        private void expensetxt_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Update expense set Amount=@amount, [category ID]=@category, Name=@name where ID=@id";
-                    if (id != null || id != "0")
-                    {
-                        SQLiteCommand command = new SQLiteCommand(insert, connection);
-                        MessageBox.Show(sourcecmd.SelectedValue.ToString() + " " + amounttxt.Text);
-                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
-                        command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
-                        command.Parameters.Add(new SQLiteParameter("@category", sourcecmd.SelectedValue));
-                        command.Parameters.Add(new SQLiteParameter("@id", id));
-                        var execute = command.ExecuteNonQuery();
-                        if (execute > 0)
-                        {
-                            MessageBox.Show("Expense updated.");
-                            Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to update an expense.");
-                        }
-                    }
+                    string query = "SELECT * FROM expense WHERE Category like '%" + expensetxt.Text + "%' or amount like '%" + expensetxt.Text + "%' or Name like '%" + expensetxt.Text + "%' ORDER BY Date desc";
+                    DataTable dataTable = new DataTable();
+                    SQLiteCommand com = new SQLiteCommand(query, connection);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
+                    sda.Fill(dataTable);
+                    expensedgv.DataSource = dataTable;
+                    dataTable.Dispose();
+                    sda.Dispose();
                     connection.Close();
                 }
             }
             catch (Exception error)
             {
-                MessageBox.Show("Encountered an error " + error.Message);
+                MessageBox.Show(error.Message);
+                throw;
             }
+        }
+
+        private void expensetxt_Leave(object sender, EventArgs e)
+        {
+            getexpense();
+        }
+
+        private void Expense_Load(object sender, EventArgs e)
+        {
+            getexpense();
+            expensedgv.Columns[1].Visible = false;
+        }
+
+        private void expensetxt_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void updateexpensebtn_Click_1(object sender, EventArgs e)
+        {
+            Upsertexpense expense = new Upsertexpense();
+            expense.nametxt.Text = expensedgv.CurrentRow.Cells[4].Value.ToString();
+            expense.amounttxt.Text = expensedgv.CurrentRow.Cells[5].Value.ToString();
+            expense.qtttxt.Text = expensedgv.CurrentRow.Cells[6].Value.ToString();
+            expense.sourcecmd.SelectedItem = expensedgv.CurrentRow.Cells[2].Value.ToString();
+            expense.id = expensedgv.CurrentRow.Cells[0].Value.ToString();
+            expense.gunaButton2.Visible = true;
+            expense.gunaButton2.BringToFront();
+            expense.Show();
         }
     }
 }
