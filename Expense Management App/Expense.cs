@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,34 @@ namespace Expense_Management_App
                     for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
                         expensedgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to the database is closed");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }void sumbudget()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "Select sum(Amount) From Expense WHERE [Budget ID] = " + id;
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        dataReader.Read();
+                        expensetotal.Text = Convert.ToDecimal(dataReader[0]).ToString("C", new CultureInfo("en-MW"));
+                        expensetotal.BackColor = Color.PaleGreen;
+                        dataReader.Close();
                     }
                     connection.Close();
                 }
@@ -110,7 +139,11 @@ namespace Expense_Management_App
         private void Expense_Load(object sender, EventArgs e)
         {
             getexpense();
-            expensedgv.Columns[1].Visible = false;
+            sumbudget();
+            if (expensedgv.Rows.Count > 0)
+            {
+                expensedgv.Columns[1].Visible = false;
+            }
         }
 
         private void expensetxt_OnValueChanged(object sender, EventArgs e)
@@ -134,6 +167,47 @@ namespace Expense_Management_App
             expense.gunaButton2.Visible = true;
             expense.gunaButton2.BringToFront();
             expense.Show();
+        }
+
+        private void expensetotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteexpensebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string insert = "Delete from expense where ID=@id";
+                    if (expensedgv.CurrentRow.Cells[0].Value.ToString() != null || expensedgv.CurrentRow.Cells[0].Value.ToString() != "0")
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete the expense?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SQLiteCommand command = new SQLiteCommand(insert, connection);
+                            command.Parameters.Add(new SQLiteParameter("@id", expensedgv.CurrentRow.Cells[0].Value.ToString()));
+                            var execute = command.ExecuteNonQuery();
+                            if (execute > 0)
+                            {
+                                MessageBox.Show("expense deleted.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to deleted an expense.");
+                            }
+                        }
+                    }
+                    connection.Close();
+                    getexpense();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
         }
     }
 }

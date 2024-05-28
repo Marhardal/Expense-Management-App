@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expense));
             this.expensedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.categorybtn = new Guna.UI.WinForms.GunaButton();
@@ -39,6 +39,7 @@
             this.expensetxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.expensetotal = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,20 +49,20 @@
             this.expensedgv.AllowUserToDeleteRows = false;
             this.expensedgv.AllowUserToOrderColumns = true;
             this.expensedgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.expensedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.expensedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
             this.expensedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.expensedgv.BackgroundColor = System.Drawing.Color.LightGray;
             this.expensedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.expensedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.expensedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.expensedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.expensedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.expensedgv.DoubleBuffered = true;
             this.expensedgv.EnableHeadersVisualStyles = false;
@@ -117,7 +118,7 @@
             this.deleteexpensebtn.ForeColor = System.Drawing.Color.Black;
             this.deleteexpensebtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteexpensebtn.Image")));
             this.deleteexpensebtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.deleteexpensebtn.Location = new System.Drawing.Point(596, 54);
+            this.deleteexpensebtn.Location = new System.Drawing.Point(595, 54);
             this.deleteexpensebtn.Name = "deleteexpensebtn";
             this.deleteexpensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.deleteexpensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -128,6 +129,7 @@
             this.deleteexpensebtn.TabIndex = 19;
             this.deleteexpensebtn.Text = "Delete";
             this.deleteexpensebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.deleteexpensebtn.Click += new System.EventHandler(this.deleteexpensebtn_Click);
             // 
             // updateexpensebtn
             // 
@@ -233,11 +235,29 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Expense Management System\\Expense\\Category";
             // 
+            // expensetotal
+            // 
+            this.expensetotal.AutoEllipsis = true;
+            this.expensetotal.AutoSize = false;
+            this.expensetotal.CursorType = null;
+            this.expensetotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.expensetotal.Location = new System.Drawing.Point(953, 105);
+            this.expensetotal.Name = "expensetotal";
+            this.expensetotal.Padding = new System.Windows.Forms.Padding(0, 2, 4, 2);
+            this.expensetotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.expensetotal.Size = new System.Drawing.Size(235, 31);
+            this.expensetotal.TabIndex = 26;
+            this.expensetotal.Text = "0";
+            this.expensetotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.expensetotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.expensetotal.Click += new System.EventHandler(this.expensetotal_Click);
+            // 
             // Expense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 840);
+            this.Controls.Add(this.expensetotal);
             this.Controls.Add(this.gunaControlBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.expensedgv);
@@ -267,5 +287,6 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox expensetxt;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.Label label1;
+        private Bunifu.UI.WinForms.BunifuLabel expensetotal;
     }
 }

@@ -140,8 +140,38 @@ namespace Expense_Management_App
             pages.SetPage("Report");
         }
 
+        void gettransaction()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "Select * from all_trans";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        transdgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to the database is closed");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void transbtn_Click(object sender, EventArgs e)
         {
+            gettransaction();
             pages.SetPage("Transaction");
             headerlbl.Text = "Transaction";
         }
@@ -351,6 +381,7 @@ namespace Expense_Management_App
                     dataTable.Dispose();
                     sda.Dispose();
                     connection.Close();
+
                 }
             }
             catch (Exception error)
@@ -365,6 +396,87 @@ namespace Expense_Management_App
             Expense expense = new Expense();
             expense.id = budgetdgv.CurrentRow.Cells[0].Value.ToString();
             expense.Show();
+        }
+
+        private void transaddbtn_Click(object sender, EventArgs e)
+        {
+            Transaction trans = new Transaction();
+            trans.Show();
+        }
+
+        private void transeditbtn_Click(object sender, EventArgs e)
+        {
+            Transaction trans = new Transaction();
+            trans.sourcecmd.SelectedValue = incomedgv.CurrentRow.Cells[5].Value.ToString();
+            trans.budgetcmd.SelectedValue = incomedgv.CurrentRow.Cells[1].Value.ToString();
+            trans.incomecmd.SelectedValue = incomedgv.CurrentRow.Cells[3].Value.ToString();
+            trans.id = incomedgv.CurrentRow.Cells[0].Value.ToString();
+            trans.Show();
+        }
+
+        private void transtxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM all_trans WHERE Date like '%" + transtxt.Text + "%' or [Budget Name] like '%" + transtxt.Text + "%' or [Income Source] like '%" + budgettxt.Text + "%' ORDER BY Date desc";
+                    DataTable dataTable = new DataTable();
+                    SQLiteCommand com = new SQLiteCommand(query, connection);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
+                    sda.Fill(dataTable);
+                    transdgv.DataSource = dataTable;
+                    dataTable.Dispose();
+                    sda.Dispose();
+                    connection.Close();
+                    transdgv.Columns[1].Visible = false;
+                    transdgv.Columns[3].Visible = false;
+
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void transtxt_Leave(object sender, EventArgs e)
+        {
+            gettransaction();
+        }
+
+        private void transdelbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string insert = "Delete from Transaction where ID=@id";
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete the Income Source?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            SQLiteCommand command = new SQLiteCommand(insert, connection);
+                            command.Parameters.Add(new SQLiteParameter("@id", incomedgv.CurrentRow.Cells[0].Value.ToString()));
+                            var execute = command.ExecuteNonQuery();
+                            if (execute > 0)
+                            {
+                                MessageBox.Show("Income source deleted.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to deleted an income source.");
+                            }
+                        }
+                    connection.Close();
+                    getincome();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
         }
     }
 }
