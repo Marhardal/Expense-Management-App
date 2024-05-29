@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expense));
             this.expensedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.categorybtn = new Guna.UI.WinForms.GunaButton();
@@ -40,6 +40,8 @@
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.expensetotal = new Bunifu.UI.WinForms.BunifuLabel();
+            this.refreshbtn = new Guna.UI.WinForms.GunaButton();
+            this.printbtn = new Guna.UI.WinForms.GunaButton();
             ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,20 +51,20 @@
             this.expensedgv.AllowUserToDeleteRows = false;
             this.expensedgv.AllowUserToOrderColumns = true;
             this.expensedgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.expensedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.expensedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.expensedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.expensedgv.BackgroundColor = System.Drawing.Color.LightGray;
             this.expensedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.expensedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.expensedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.expensedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.expensedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.expensedgv.DoubleBuffered = true;
             this.expensedgv.EnableHeadersVisualStyles = false;
@@ -76,7 +78,7 @@
             this.expensedgv.RowHeadersWidth = 51;
             this.expensedgv.RowTemplate.Height = 24;
             this.expensedgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.expensedgv.Size = new System.Drawing.Size(1176, 683);
+            this.expensedgv.Size = new System.Drawing.Size(1176, 632);
             this.expensedgv.TabIndex = 22;
             // 
             // categorybtn
@@ -92,7 +94,7 @@
             this.categorybtn.ForeColor = System.Drawing.Color.Black;
             this.categorybtn.Image = ((System.Drawing.Image)(resources.GetObject("categorybtn.Image")));
             this.categorybtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.categorybtn.Location = new System.Drawing.Point(953, 54);
+            this.categorybtn.Location = new System.Drawing.Point(951, 54);
             this.categorybtn.Name = "categorybtn";
             this.categorybtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.categorybtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -118,7 +120,7 @@
             this.deleteexpensebtn.ForeColor = System.Drawing.Color.Black;
             this.deleteexpensebtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteexpensebtn.Image")));
             this.deleteexpensebtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.deleteexpensebtn.Location = new System.Drawing.Point(595, 54);
+            this.deleteexpensebtn.Location = new System.Drawing.Point(638, 54);
             this.deleteexpensebtn.Name = "deleteexpensebtn";
             this.deleteexpensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.deleteexpensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -144,7 +146,7 @@
             this.updateexpensebtn.ForeColor = System.Drawing.Color.Black;
             this.updateexpensebtn.Image = ((System.Drawing.Image)(resources.GetObject("updateexpensebtn.Image")));
             this.updateexpensebtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.updateexpensebtn.Location = new System.Drawing.Point(304, 54);
+            this.updateexpensebtn.Location = new System.Drawing.Point(325, 54);
             this.updateexpensebtn.Name = "updateexpensebtn";
             this.updateexpensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.updateexpensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -252,11 +254,64 @@
             this.expensetotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.expensetotal.Click += new System.EventHandler(this.expensetotal_Click);
             // 
+            // refreshbtn
+            // 
+            this.refreshbtn.AnimationHoverSpeed = 0.07F;
+            this.refreshbtn.AnimationSpeed = 0.03F;
+            this.refreshbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.refreshbtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.refreshbtn.BorderColor = System.Drawing.Color.Black;
+            this.refreshbtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.refreshbtn.FocusedColor = System.Drawing.Color.Empty;
+            this.refreshbtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshbtn.ForeColor = System.Drawing.Color.Black;
+            this.refreshbtn.Image = ((System.Drawing.Image)(resources.GetObject("refreshbtn.Image")));
+            this.refreshbtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.refreshbtn.Location = new System.Drawing.Point(12, 788);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.refreshbtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.refreshbtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.refreshbtn.OnHoverImage = null;
+            this.refreshbtn.OnPressedColor = System.Drawing.Color.Black;
+            this.refreshbtn.Size = new System.Drawing.Size(235, 40);
+            this.refreshbtn.TabIndex = 27;
+            this.refreshbtn.Text = "Refresh";
+            this.refreshbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            // 
+            // printbtn
+            // 
+            this.printbtn.AnimationHoverSpeed = 0.07F;
+            this.printbtn.AnimationSpeed = 0.03F;
+            this.printbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.printbtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.printbtn.BorderColor = System.Drawing.Color.Black;
+            this.printbtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.printbtn.FocusedColor = System.Drawing.Color.Empty;
+            this.printbtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printbtn.ForeColor = System.Drawing.Color.Black;
+            this.printbtn.Image = ((System.Drawing.Image)(resources.GetObject("printbtn.Image")));
+            this.printbtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.printbtn.Location = new System.Drawing.Point(953, 788);
+            this.printbtn.Name = "printbtn";
+            this.printbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.printbtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.printbtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.printbtn.OnHoverImage = null;
+            this.printbtn.OnPressedColor = System.Drawing.Color.Black;
+            this.printbtn.Size = new System.Drawing.Size(235, 40);
+            this.printbtn.TabIndex = 28;
+            this.printbtn.Text = "Print";
+            this.printbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Expense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 840);
+            this.Controls.Add(this.printbtn);
+            this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.expensetotal);
             this.Controls.Add(this.gunaControlBox1);
             this.Controls.Add(this.label1);
@@ -288,5 +343,7 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuLabel expensetotal;
+        private Guna.UI.WinForms.GunaButton refreshbtn;
+        private Guna.UI.WinForms.GunaButton printbtn;
     }
 }
