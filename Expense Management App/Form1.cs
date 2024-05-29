@@ -598,5 +598,35 @@ namespace Expense_Management_App
                 login.Show();
             }
         }
+
+        private void acclbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            settingspages.SetPage("Account");
+        }
+
+        private void gunaLinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            settingspages.SetPage("Company");
+        }
+
+        private void backlbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            settingspages.SetPage("Backup");
+        }
+
+        private void aboutlbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            settingspages.SetPage("About");
+        }
+
+        private void helplbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            settingspages.SetPage("Help");
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

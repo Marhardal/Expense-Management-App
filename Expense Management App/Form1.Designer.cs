@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
+            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation2 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -44,6 +44,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -105,6 +106,28 @@
             this.userbtn = new Guna.UI.WinForms.GunaButton();
             this.incomebtn = new Guna.UI.WinForms.GunaButton();
             this.homebtn = new Guna.UI.WinForms.GunaButton();
+            this.settingspages = new Bunifu.UI.WinForms.BunifuPages();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.acclbl = new Guna.UI.WinForms.GunaLinkLabel();
+            this.helplbl = new Guna.UI.WinForms.GunaLinkLabel();
+            this.aboutlbl = new Guna.UI.WinForms.GunaLinkLabel();
+            this.backlbl = new Guna.UI.WinForms.GunaLinkLabel();
+            this.gunaLinkLabel1 = new Guna.UI.WinForms.GunaLinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pwordtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.usnmtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.rolecmd = new Guna.UI.WinForms.GunaComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.nametxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gunaButton2 = new Guna.UI.WinForms.GunaButton();
             this.panel1.SuspendLayout();
             this.pages.SuspendLayout();
             this.Home.SuspendLayout();
@@ -124,8 +147,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.userdgv)).BeginInit();
             this.Transaction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transdgv)).BeginInit();
+            this.Setting.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.settingspages.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -187,22 +213,22 @@
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
-            animation1.AnimateOnlyDifferences = false;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.pages.Transition = animation1;
+            animation2.AnimateOnlyDifferences = false;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.pages.Transition = animation2;
             this.pages.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
             // 
             // Home
@@ -1069,6 +1095,12 @@
             // 
             // Setting
             // 
+            this.Setting.Controls.Add(this.helplbl);
+            this.Setting.Controls.Add(this.gunaLinkLabel1);
+            this.Setting.Controls.Add(this.backlbl);
+            this.Setting.Controls.Add(this.aboutlbl);
+            this.Setting.Controls.Add(this.acclbl);
+            this.Setting.Controls.Add(this.settingspages);
             this.Setting.Location = new System.Drawing.Point(4, 4);
             this.Setting.Name = "Setting";
             this.Setting.Size = new System.Drawing.Size(1125, 796);
@@ -1103,7 +1135,6 @@
             this.controlcmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.controlcmd.OnHoverItemForeColor = System.Drawing.Color.White;
             this.controlcmd.Size = new System.Drawing.Size(168, 31);
-            this.controlcmd.StartIndex = 0;
             this.controlcmd.TabIndex = 1;
             this.controlcmd.SelectedIndexChanged += new System.EventHandler(this.controlcmd_SelectedIndexChanged);
             // 
@@ -1343,6 +1374,362 @@
             this.homebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.homebtn.Click += new System.EventHandler(this.homebtn_Click);
             // 
+            // settingspages
+            // 
+            this.settingspages.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.settingspages.AllowTransitions = true;
+            this.settingspages.Controls.Add(this.tabPage1);
+            this.settingspages.Controls.Add(this.tabPage2);
+            this.settingspages.Controls.Add(this.tabPage3);
+            this.settingspages.Controls.Add(this.tabPage4);
+            this.settingspages.Controls.Add(this.tabPage5);
+            this.settingspages.Location = new System.Drawing.Point(3, 46);
+            this.settingspages.Multiline = true;
+            this.settingspages.Name = "settingspages";
+            this.settingspages.Page = this.tabPage1;
+            this.settingspages.PageIndex = 0;
+            this.settingspages.PageName = "tabPage1";
+            this.settingspages.PageTitle = "Account";
+            this.settingspages.SelectedIndex = 0;
+            this.settingspages.ShowToolTips = true;
+            this.settingspages.Size = new System.Drawing.Size(1117, 719);
+            this.settingspages.TabIndex = 0;
+            animation1.AnimateOnlyDifferences = false;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.settingspages.Transition = animation1;
+            this.settingspages.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.pwordtxt);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.usnmtxt);
+            this.tabPage1.Controls.Add(this.rolecmd);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.nametxt);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.gunaButton2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1109, 690);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Account";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1109, 690);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Help";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1109, 690);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "About";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1109, 690);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Backup";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1109, 690);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Company";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // acclbl
+            // 
+            this.acclbl.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.acclbl.AutoSize = true;
+            this.acclbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acclbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.acclbl.LinkVisited = true;
+            this.acclbl.Location = new System.Drawing.Point(7, 12);
+            this.acclbl.Name = "acclbl";
+            this.acclbl.Size = new System.Drawing.Size(84, 28);
+            this.acclbl.TabIndex = 1;
+            this.acclbl.TabStop = true;
+            this.acclbl.Text = "Account";
+            this.acclbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.acclbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.acclbl_LinkClicked);
+            // 
+            // helplbl
+            // 
+            this.helplbl.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.helplbl.AutoSize = true;
+            this.helplbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helplbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.helplbl.LinkVisited = true;
+            this.helplbl.Location = new System.Drawing.Point(349, 12);
+            this.helplbl.Name = "helplbl";
+            this.helplbl.Size = new System.Drawing.Size(53, 28);
+            this.helplbl.TabIndex = 2;
+            this.helplbl.TabStop = true;
+            this.helplbl.Text = "Help";
+            this.helplbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.helplbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.helplbl_LinkClicked);
+            // 
+            // aboutlbl
+            // 
+            this.aboutlbl.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.aboutlbl.AutoSize = true;
+            this.aboutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutlbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.aboutlbl.LinkVisited = true;
+            this.aboutlbl.Location = new System.Drawing.Point(279, 12);
+            this.aboutlbl.Name = "aboutlbl";
+            this.aboutlbl.Size = new System.Drawing.Size(67, 28);
+            this.aboutlbl.TabIndex = 3;
+            this.aboutlbl.TabStop = true;
+            this.aboutlbl.Text = "About";
+            this.aboutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.aboutlbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.aboutlbl_LinkClicked);
+            // 
+            // backlbl
+            // 
+            this.backlbl.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.backlbl.AutoSize = true;
+            this.backlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backlbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.backlbl.LinkVisited = true;
+            this.backlbl.Location = new System.Drawing.Point(193, 12);
+            this.backlbl.Name = "backlbl";
+            this.backlbl.Size = new System.Drawing.Size(83, 28);
+            this.backlbl.TabIndex = 4;
+            this.backlbl.TabStop = true;
+            this.backlbl.Text = "Backups";
+            this.backlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.backlbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.backlbl_LinkClicked);
+            // 
+            // gunaLinkLabel1
+            // 
+            this.gunaLinkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.gunaLinkLabel1.AutoSize = true;
+            this.gunaLinkLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLinkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.gunaLinkLabel1.LinkVisited = true;
+            this.gunaLinkLabel1.Location = new System.Drawing.Point(94, 12);
+            this.gunaLinkLabel1.Name = "gunaLinkLabel1";
+            this.gunaLinkLabel1.Size = new System.Drawing.Size(96, 28);
+            this.gunaLinkLabel1.TabIndex = 5;
+            this.gunaLinkLabel1.TabStop = true;
+            this.gunaLinkLabel1.Text = "Company";
+            this.gunaLinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gunaLinkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.gunaLinkLabel1_LinkClicked);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(359, 436);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 24);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Password";
+            // 
+            // pwordtxt
+            // 
+            this.pwordtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.pwordtxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.pwordtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pwordtxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.pwordtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.pwordtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.pwordtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pwordtxt.HintForeColor = System.Drawing.Color.DimGray;
+            this.pwordtxt.HintText = "Search for an Income.";
+            this.pwordtxt.isPassword = false;
+            this.pwordtxt.LineFocusedColor = System.Drawing.Color.Blue;
+            this.pwordtxt.LineIdleColor = System.Drawing.Color.Gray;
+            this.pwordtxt.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.pwordtxt.LineThickness = 3;
+            this.pwordtxt.Location = new System.Drawing.Point(359, 469);
+            this.pwordtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.pwordtxt.MaxLength = 32767;
+            this.pwordtxt.Name = "pwordtxt";
+            this.pwordtxt.Size = new System.Drawing.Size(390, 35);
+            this.pwordtxt.TabIndex = 45;
+            this.pwordtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(359, 359);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 24);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Username";
+            // 
+            // usnmtxt
+            // 
+            this.usnmtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.usnmtxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.usnmtxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usnmtxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.usnmtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.usnmtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.usnmtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.usnmtxt.HintForeColor = System.Drawing.Color.DimGray;
+            this.usnmtxt.HintText = "Search for an Income.";
+            this.usnmtxt.isPassword = false;
+            this.usnmtxt.LineFocusedColor = System.Drawing.Color.Blue;
+            this.usnmtxt.LineIdleColor = System.Drawing.Color.Gray;
+            this.usnmtxt.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.usnmtxt.LineThickness = 3;
+            this.usnmtxt.Location = new System.Drawing.Point(359, 392);
+            this.usnmtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.usnmtxt.MaxLength = 32767;
+            this.usnmtxt.Name = "usnmtxt";
+            this.usnmtxt.Size = new System.Drawing.Size(390, 35);
+            this.usnmtxt.TabIndex = 43;
+            this.usnmtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // rolecmd
+            // 
+            this.rolecmd.BackColor = System.Drawing.Color.Transparent;
+            this.rolecmd.BaseColor = System.Drawing.Color.White;
+            this.rolecmd.BorderColor = System.Drawing.Color.Black;
+            this.rolecmd.BorderSize = 1;
+            this.rolecmd.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.rolecmd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rolecmd.FocusedColor = System.Drawing.Color.Empty;
+            this.rolecmd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rolecmd.ForeColor = System.Drawing.Color.Black;
+            this.rolecmd.FormattingEnabled = true;
+            this.rolecmd.Items.AddRange(new object[] {
+            "Select a user role."});
+            this.rolecmd.Location = new System.Drawing.Point(359, 319);
+            this.rolecmd.Name = "rolecmd";
+            this.rolecmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.rolecmd.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.rolecmd.Size = new System.Drawing.Size(390, 31);
+            this.rolecmd.StartIndex = 0;
+            this.rolecmd.TabIndex = 41;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(359, 286);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 24);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Role";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(359, 209);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 24);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Name";
+            // 
+            // nametxt
+            // 
+            this.nametxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.nametxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.nametxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nametxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.nametxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nametxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.nametxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nametxt.HintForeColor = System.Drawing.Color.DimGray;
+            this.nametxt.HintText = "Search for an Income.";
+            this.nametxt.isPassword = false;
+            this.nametxt.LineFocusedColor = System.Drawing.Color.Blue;
+            this.nametxt.LineIdleColor = System.Drawing.Color.Gray;
+            this.nametxt.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.nametxt.LineThickness = 3;
+            this.nametxt.Location = new System.Drawing.Point(359, 242);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(4);
+            this.nametxt.MaxLength = 32767;
+            this.nametxt.Name = "nametxt";
+            this.nametxt.Size = new System.Drawing.Size(390, 35);
+            this.nametxt.TabIndex = 36;
+            this.nametxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(359, 175);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(278, 25);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Fill in all fields before contining.";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(359, 137);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 29);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Registry";
+            // 
+            // gunaButton2
+            // 
+            this.gunaButton2.AnimationHoverSpeed = 0.07F;
+            this.gunaButton2.AnimationSpeed = 0.03F;
+            this.gunaButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.gunaButton2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.gunaButton2.BorderColor = System.Drawing.Color.Black;
+            this.gunaButton2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaButton2.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaButton2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaButton2.ForeColor = System.Drawing.Color.Black;
+            this.gunaButton2.Image = ((System.Drawing.Image)(resources.GetObject("gunaButton2.Image")));
+            this.gunaButton2.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaButton2.Location = new System.Drawing.Point(359, 513);
+            this.gunaButton2.Name = "gunaButton2";
+            this.gunaButton2.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gunaButton2.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gunaButton2.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaButton2.OnHoverImage = null;
+            this.gunaButton2.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaButton2.Size = new System.Drawing.Size(191, 40);
+            this.gunaButton2.TabIndex = 42;
+            this.gunaButton2.Text = "Update";
+            this.gunaButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gunaButton2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1379,9 +1766,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.userdgv)).EndInit();
             this.Transaction.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transdgv)).EndInit();
+            this.Setting.ResumeLayout(false);
+            this.Setting.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.settingspages.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1450,6 +1842,28 @@
         private Guna.UI.WinForms.GunaButton expensesviewbtn;
         private Bunifu.Framework.UI.BunifuCustomDataGrid transdgv;
         internal Guna.UI.WinForms.GunaComboBox controlcmd;
+        private Guna.UI.WinForms.GunaLinkLabel acclbl;
+        private Bunifu.UI.WinForms.BunifuPages settingspages;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private Guna.UI.WinForms.GunaLinkLabel helplbl;
+        private Guna.UI.WinForms.GunaLinkLabel gunaLinkLabel1;
+        private Guna.UI.WinForms.GunaLinkLabel backlbl;
+        private Guna.UI.WinForms.GunaLinkLabel aboutlbl;
+        private System.Windows.Forms.Label label2;
+        internal Bunifu.Framework.UI.BunifuMaterialTextbox pwordtxt;
+        private System.Windows.Forms.Label label7;
+        internal Bunifu.Framework.UI.BunifuMaterialTextbox usnmtxt;
+        internal Guna.UI.WinForms.GunaComboBox rolecmd;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        internal Bunifu.Framework.UI.BunifuMaterialTextbox nametxt;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        internal Guna.UI.WinForms.GunaButton gunaButton2;
     }
 }
 
