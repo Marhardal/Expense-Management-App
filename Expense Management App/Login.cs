@@ -43,7 +43,7 @@ namespace Expense_Management_App
                             form.controlcmd.Items.Add(reader[2].ToString());
                             form.controlcmd.Items.Add("Logout");
                             form.controlcmd.SelectedIndex = 0;
-                            form.id = reader[1].ToString();
+                            form.id = Convert.ToInt32(reader[0].ToString());
                             form.Show();
                         }
                         else

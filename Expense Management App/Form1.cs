@@ -22,7 +22,7 @@ namespace Expense_Management_App
 
         SQLiteConnection connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["lite"].ToString());
         
-        internal string id;
+        internal int id;
         
         void getincome()
         {
@@ -186,7 +186,10 @@ namespace Expense_Management_App
 
         private void setibtn_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(id);
+            getUser();
             pages.SetPage("Setting");
+            headerlbl.Text = "Setting";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -599,9 +602,42 @@ namespace Expense_Management_App
             }
         }
 
+        void getUser()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "Select * from Users Where ID="+id;
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        nametxt.Text = reader[2].ToString();
+                        rolecmd.Items.Add(reader[1].ToString());
+                        usnmtxt.Text = reader[3].ToString();
+                        pwordtxt.Text = reader[4].ToString();
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to the database is closed");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void acclbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             settingspages.SetPage("Account");
+            getUser();
         }
 
         private void gunaLinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -627,6 +663,44 @@ namespace Expense_Management_App
         private void cancelbtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    if (nametxt.Text != "" && usnmtxt.Text != "" && pwordtxt.Text != "")
+                    {
+                        string insert = "Update user Set name=@name, username=@usnm, password=@pword where ID ="+id; 
+                        SQLiteCommand command = new SQLiteCommand(insert, connection);
+                        command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
+                        command.Parameters.Add(new SQLiteParameter("@usnm", usnmtxt.Text));
+                        command.Parameters.Add(new SQLiteParameter("@pword", pwordtxt.Text));
+                        var execute = command.ExecuteNonQuery();
+                        if (execute > 0)
+                        {
+                            MessageBox.Show("User Updated.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to Update user.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill in all fields");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
         }
     }
 }
