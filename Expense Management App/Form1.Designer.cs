@@ -87,6 +87,7 @@
             this.addexpensebtn = new Guna.UI.WinForms.GunaButton();
             this.Report = new System.Windows.Forms.TabPage();
             this.Transaction = new System.Windows.Forms.TabPage();
+            this.transdgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.transtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.transdelbtn = new Guna.UI.WinForms.GunaButton();
             this.transeditbtn = new Guna.UI.WinForms.GunaButton();
@@ -102,10 +103,9 @@
             this.transbtn = new Guna.UI.WinForms.GunaButton();
             this.reportsbtn = new Guna.UI.WinForms.GunaButton();
             this.budgetbtn = new Guna.UI.WinForms.GunaButton();
-            this.expensebtn = new Guna.UI.WinForms.GunaButton();
+            this.userbtn = new Guna.UI.WinForms.GunaButton();
             this.incomebtn = new Guna.UI.WinForms.GunaButton();
             this.homebtn = new Guna.UI.WinForms.GunaButton();
-            this.transdgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1.SuspendLayout();
             this.pages.SuspendLayout();
             this.Home.SuspendLayout();
@@ -124,9 +124,9 @@
             this.Expense.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).BeginInit();
             this.Transaction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transdgv)).BeginInit();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transdgv)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -180,10 +180,10 @@
             this.pages.Location = new System.Drawing.Point(264, 77);
             this.pages.Multiline = true;
             this.pages.Name = "pages";
-            this.pages.Page = this.Transaction;
-            this.pages.PageIndex = 5;
-            this.pages.PageName = "Transaction";
-            this.pages.PageTitle = "Transaction";
+            this.pages.Page = this.Home;
+            this.pages.PageIndex = 0;
+            this.pages.PageName = "Home";
+            this.pages.PageTitle = "Home";
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
@@ -754,7 +754,7 @@
             this.Expense.Name = "Expense";
             this.Expense.Size = new System.Drawing.Size(1125, 796);
             this.Expense.TabIndex = 3;
-            this.Expense.Text = "Expense";
+            this.Expense.Text = "User";
             // 
             // expensedgv
             // 
@@ -943,6 +943,42 @@
             this.Transaction.TabIndex = 5;
             this.Transaction.Text = "Transaction";
             // 
+            // transdgv
+            // 
+            this.transdgv.AllowUserToAddRows = false;
+            this.transdgv.AllowUserToDeleteRows = false;
+            this.transdgv.AllowUserToOrderColumns = true;
+            this.transdgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.transdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.transdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.transdgv.BackgroundColor = System.Drawing.Color.LightGray;
+            this.transdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.transdgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transdgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.transdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.transdgv.DoubleBuffered = true;
+            this.transdgv.EnableHeadersVisualStyles = false;
+            this.transdgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.transdgv.HeaderForeColor = System.Drawing.Color.White;
+            this.transdgv.Location = new System.Drawing.Point(8, 100);
+            this.transdgv.MultiSelect = false;
+            this.transdgv.Name = "transdgv";
+            this.transdgv.ReadOnly = true;
+            this.transdgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.transdgv.RowHeadersWidth = 51;
+            this.transdgv.RowTemplate.Height = 24;
+            this.transdgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.transdgv.Size = new System.Drawing.Size(1110, 683);
+            this.transdgv.TabIndex = 19;
+            // 
             // transtxt
             // 
             this.transtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
@@ -1116,7 +1152,7 @@
             this.panel2.Controls.Add(this.transbtn);
             this.panel2.Controls.Add(this.reportsbtn);
             this.panel2.Controls.Add(this.budgetbtn);
-            this.panel2.Controls.Add(this.expensebtn);
+            this.panel2.Controls.Add(this.userbtn);
             this.panel2.Controls.Add(this.incomebtn);
             this.panel2.Controls.Add(this.homebtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -1138,7 +1174,7 @@
             this.setibtn.ForeColor = System.Drawing.Color.Black;
             this.setibtn.Image = ((System.Drawing.Image)(resources.GetObject("setibtn.Image")));
             this.setibtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.setibtn.Location = new System.Drawing.Point(16, 658);
+            this.setibtn.Location = new System.Drawing.Point(16, 653);
             this.setibtn.Name = "setibtn";
             this.setibtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.setibtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1164,7 +1200,7 @@
             this.notibtn.ForeColor = System.Drawing.Color.Black;
             this.notibtn.Image = ((System.Drawing.Image)(resources.GetObject("notibtn.Image")));
             this.notibtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.notibtn.Location = new System.Drawing.Point(16, 584);
+            this.notibtn.Location = new System.Drawing.Point(16, 577);
             this.notibtn.Name = "notibtn";
             this.notibtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.notibtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1190,7 +1226,7 @@
             this.transbtn.ForeColor = System.Drawing.Color.Black;
             this.transbtn.Image = ((System.Drawing.Image)(resources.GetObject("transbtn.Image")));
             this.transbtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.transbtn.Location = new System.Drawing.Point(16, 505);
+            this.transbtn.Location = new System.Drawing.Point(16, 425);
             this.transbtn.Name = "transbtn";
             this.transbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.transbtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1216,7 +1252,7 @@
             this.reportsbtn.ForeColor = System.Drawing.Color.Black;
             this.reportsbtn.Image = ((System.Drawing.Image)(resources.GetObject("reportsbtn.Image")));
             this.reportsbtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.reportsbtn.Location = new System.Drawing.Point(16, 429);
+            this.reportsbtn.Location = new System.Drawing.Point(16, 349);
             this.reportsbtn.Name = "reportsbtn";
             this.reportsbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.reportsbtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1242,7 +1278,7 @@
             this.budgetbtn.ForeColor = System.Drawing.Color.Black;
             this.budgetbtn.Image = ((System.Drawing.Image)(resources.GetObject("budgetbtn.Image")));
             this.budgetbtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.budgetbtn.Location = new System.Drawing.Point(16, 276);
+            this.budgetbtn.Location = new System.Drawing.Point(16, 273);
             this.budgetbtn.Name = "budgetbtn";
             this.budgetbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.budgetbtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1255,31 +1291,31 @@
             this.budgetbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.budgetbtn.Click += new System.EventHandler(this.budgetbtn_Click);
             // 
-            // expensebtn
+            // userbtn
             // 
-            this.expensebtn.AnimationHoverSpeed = 0.07F;
-            this.expensebtn.AnimationSpeed = 0.03F;
-            this.expensebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.expensebtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.expensebtn.BorderColor = System.Drawing.Color.Black;
-            this.expensebtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.expensebtn.FocusedColor = System.Drawing.Color.Empty;
-            this.expensebtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expensebtn.ForeColor = System.Drawing.Color.Black;
-            this.expensebtn.Image = ((System.Drawing.Image)(resources.GetObject("expensebtn.Image")));
-            this.expensebtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.expensebtn.Location = new System.Drawing.Point(16, 350);
-            this.expensebtn.Name = "expensebtn";
-            this.expensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.expensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.expensebtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.expensebtn.OnHoverImage = null;
-            this.expensebtn.OnPressedColor = System.Drawing.Color.Black;
-            this.expensebtn.Size = new System.Drawing.Size(235, 50);
-            this.expensebtn.TabIndex = 2;
-            this.expensebtn.Text = "Expenses";
-            this.expensebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.expensebtn.Click += new System.EventHandler(this.expensebtn_Click);
+            this.userbtn.AnimationHoverSpeed = 0.07F;
+            this.userbtn.AnimationSpeed = 0.03F;
+            this.userbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.userbtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.userbtn.BorderColor = System.Drawing.Color.Black;
+            this.userbtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.userbtn.FocusedColor = System.Drawing.Color.Empty;
+            this.userbtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userbtn.ForeColor = System.Drawing.Color.Black;
+            this.userbtn.Image = ((System.Drawing.Image)(resources.GetObject("userbtn.Image")));
+            this.userbtn.ImageSize = new System.Drawing.Size(30, 30);
+            this.userbtn.Location = new System.Drawing.Point(16, 501);
+            this.userbtn.Name = "userbtn";
+            this.userbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.userbtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.userbtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.userbtn.OnHoverImage = null;
+            this.userbtn.OnPressedColor = System.Drawing.Color.Black;
+            this.userbtn.Size = new System.Drawing.Size(235, 50);
+            this.userbtn.TabIndex = 2;
+            this.userbtn.Text = "Users";
+            this.userbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.userbtn.Click += new System.EventHandler(this.expensebtn_Click);
             // 
             // incomebtn
             // 
@@ -1294,7 +1330,7 @@
             this.incomebtn.ForeColor = System.Drawing.Color.Black;
             this.incomebtn.Image = ((System.Drawing.Image)(resources.GetObject("incomebtn.Image")));
             this.incomebtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.incomebtn.Location = new System.Drawing.Point(16, 196);
+            this.incomebtn.Location = new System.Drawing.Point(16, 197);
             this.incomebtn.Name = "incomebtn";
             this.incomebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.incomebtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -1333,42 +1369,6 @@
             this.homebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.homebtn.Click += new System.EventHandler(this.homebtn_Click);
             // 
-            // transdgv
-            // 
-            this.transdgv.AllowUserToAddRows = false;
-            this.transdgv.AllowUserToDeleteRows = false;
-            this.transdgv.AllowUserToOrderColumns = true;
-            this.transdgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.transdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.transdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.transdgv.BackgroundColor = System.Drawing.Color.LightGray;
-            this.transdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.transdgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.transdgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.transdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.transdgv.DoubleBuffered = true;
-            this.transdgv.EnableHeadersVisualStyles = false;
-            this.transdgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            this.transdgv.HeaderForeColor = System.Drawing.Color.White;
-            this.transdgv.Location = new System.Drawing.Point(8, 100);
-            this.transdgv.MultiSelect = false;
-            this.transdgv.Name = "transdgv";
-            this.transdgv.ReadOnly = true;
-            this.transdgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.transdgv.RowHeadersWidth = 51;
-            this.transdgv.RowTemplate.Height = 24;
-            this.transdgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.transdgv.Size = new System.Drawing.Size(1110, 683);
-            this.transdgv.TabIndex = 19;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1404,10 +1404,10 @@
             this.Expense.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).EndInit();
             this.Transaction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.transdgv)).EndInit();
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.transdgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1424,7 +1424,7 @@
         private Guna.UI.WinForms.GunaButton transbtn;
         private Guna.UI.WinForms.GunaButton reportsbtn;
         private Guna.UI.WinForms.GunaButton budgetbtn;
-        private Guna.UI.WinForms.GunaButton expensebtn;
+        private Guna.UI.WinForms.GunaButton userbtn;
         private Guna.UI.WinForms.GunaButton incomebtn;
         private Guna.UI.WinForms.GunaButton homebtn;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;

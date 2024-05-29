@@ -99,14 +99,14 @@ namespace Expense_Management_App
             headerlbl.Text = "Budget";
         }
 
-        void getexpense()
+        void getUsers()
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "Select * from expenses";
+                    string select = "Select * from Users";
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                     DataTable dataTable = new DataTable();
@@ -130,9 +130,9 @@ namespace Expense_Management_App
 
         private void expensebtn_Click(object sender, EventArgs e)
         {
-            getexpense();
-            pages.SetPage("Expense");
-            headerlbl.Text = "Expense";
+            getUsers();
+            pages.SetPage("User");
+            headerlbl.Text = "Users";
         }
 
         private void reportsbtn_Click(object sender, EventArgs e)
@@ -292,7 +292,8 @@ namespace Expense_Management_App
 
         private void addexpensebtn_Click(object sender, EventArgs e)
         {
-            
+            User user = new User();
+            user.Show();
         }
 
         private void updateexpensebtn_Click(object sender, EventArgs e)

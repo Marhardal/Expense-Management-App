@@ -209,5 +209,10 @@ namespace Expense_Management_App
                 MessageBox.Show("Encountered an error " + error.Message);
             }
         }
+
+        private void refreshbtn_Click(object sender, EventArgs e)
+        {
+            getexpense();
+        }
     }
 }
