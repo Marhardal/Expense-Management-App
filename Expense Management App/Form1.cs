@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using Microsoft.VisualBasic;
 
 namespace Expense_Management_App
 {
@@ -20,7 +21,9 @@ namespace Expense_Management_App
         }
 
         SQLiteConnection connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["lite"].ToString());
-
+        
+        internal string id;
+        
         void getincome()
         {
             try
@@ -113,7 +116,7 @@ namespace Expense_Management_App
                     adapter.Fill(dataTable);
                     for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
-                        expensedgv.DataSource = dataTable;
+                        userdgv.DataSource = dataTable;
                     }
                     connection.Close();
                 }
@@ -298,17 +301,85 @@ namespace Expense_Management_App
 
         private void updateexpensebtn_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                string Password = Interaction.InputBox("Enter your Password:", "Input Box", "", 100, 100);
+                if (!string.IsNullOrEmpty(Password))
+                {
+                    connection.Open();
+                    SQLiteCommand command = new SQLiteCommand("SELECT * from users where Password=" + Password, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("The password for user " + userdgv.CurrentRow.Cells[2].Value.ToString() + " is " + userdgv.CurrentRow.Cells[4].Value.ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please make sure that you filled the password field.");
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
         private void deleteexpensebtn_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+
+                    string insert = "Delete from user where ID=@id";
+                    if (userdgv.CurrentRow.Cells[0].Value.ToString() != null)
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete a User?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            string Password = Interaction.InputBox("Enter your Password:", "Input Box", "", 100, 100);
+                            if (!string.IsNullOrEmpty(Password))
+                            {
+                                SQLiteCommand command = new SQLiteCommand("SELECT MAX(*) from users where Password="+Password, connection);
+                                SQLiteDataReader reader = command.ExecuteReader();
+                                if (reader.HasRows)
+                                {
+                                    reader.Close();
+                                    command = new SQLiteCommand(insert, connection);
+                                    command.Parameters.Add(new SQLiteParameter("@id", userdgv.CurrentRow.Cells[0].Value.ToString()));
+                                    var execute = command.ExecuteNonQuery();
+                                    if (execute > 0)
+                                    {
+                                        MessageBox.Show("User deleted.");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Failed to deleted a User.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please make sure that you filled the password field.");
+                            }
+                        }
+                    }
+                    connection.Close();
+                    getUsers();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error " + error.Message);
+            }
         }
 
         private void expensetxt_Leave(object sender, EventArgs e)
         {
-            
+            getUsers();
         }
 
         private void addbudgetdgv_Click(object sender, EventArgs e)
@@ -422,7 +493,7 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string query = "SELECT * FROM all_trans WHERE Date like '%" + transtxt.Text + "%' or [Budget Name] like '%" + transtxt.Text + "%' or [Income Source] like '%" + budgettxt.Text + "%' ORDER BY Date desc";
+                    string query = "SELECT * FROM all_trans WHERE Date like '%" + transtxt.Text + "%' or [Budget Name] like '%" + transtxt.Text + "%' or [Income Source] like '%" + transtxt.Text + "%' ORDER BY Date desc";
                     DataTable dataTable = new DataTable();
                     SQLiteCommand com = new SQLiteCommand(query, connection);
                     SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
@@ -477,6 +548,54 @@ namespace Expense_Management_App
             catch (Exception error)
             {
                 MessageBox.Show("Encountered an error " + error.Message);
+            }
+        }
+
+        private void userdgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                e.Value = new string('*', e.Value.ToString().Length);
+            }
+        }
+
+        private void usertxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM users WHERE Date like '%" + usertxt.Text + "%' or Name like '%" + usertxt.Text + "%' or Role like '%" +usertxt.Text + "%' or Username like '%" + usertxt.Text + "%'";
+                    DataTable dataTable = new DataTable();
+                    SQLiteCommand com = new SQLiteCommand(query, connection);
+                    SQLiteDataAdapter sda = new SQLiteDataAdapter(com);
+                    sda.Fill(dataTable);
+                    userdgv.DataSource = dataTable;
+                    dataTable.Dispose();
+                    sda.Dispose();
+                    connection.Close();
+
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void controlcmd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (controlcmd.SelectedIndex == 1)
+            {
+                Login login = new Login();
+                Hide();
+                login.Show();
             }
         }
     }

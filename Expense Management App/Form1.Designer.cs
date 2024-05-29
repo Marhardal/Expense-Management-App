@@ -79,11 +79,10 @@
             this.updatebudgetbtn = new Guna.UI.WinForms.GunaButton();
             this.addbudgetdgv = new Guna.UI.WinForms.GunaButton();
             this.Expense = new System.Windows.Forms.TabPage();
-            this.expensedgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.categorybtn = new Guna.UI.WinForms.GunaButton();
+            this.userdgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.usertxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.deleteexpensebtn = new Guna.UI.WinForms.GunaButton();
-            this.updateexpensebtn = new Guna.UI.WinForms.GunaButton();
+            this.deleteuserbtn = new Guna.UI.WinForms.GunaButton();
+            this.passwordbtn = new Guna.UI.WinForms.GunaButton();
             this.addexpensebtn = new Guna.UI.WinForms.GunaButton();
             this.Report = new System.Windows.Forms.TabPage();
             this.Transaction = new System.Windows.Forms.TabPage();
@@ -95,7 +94,7 @@
             this.Notification = new System.Windows.Forms.TabPage();
             this.Setting = new System.Windows.Forms.TabPage();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.gunaComboBox1 = new Guna.UI.WinForms.GunaComboBox();
+            this.controlcmd = new Guna.UI.WinForms.GunaComboBox();
             this.headerlbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.setibtn = new Guna.UI.WinForms.GunaButton();
@@ -122,7 +121,7 @@
             this.Budget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetdgv)).BeginInit();
             this.Expense.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userdgv)).BeginInit();
             this.Transaction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transdgv)).BeginInit();
             this.gunaPanel1.SuspendLayout();
@@ -143,6 +142,7 @@
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
             this.gunaControlBox1.TabIndex = 2;
+            this.gunaControlBox1.Click += new System.EventHandler(this.gunaControlBox1_Click);
             // 
             // label1
             // 
@@ -180,10 +180,10 @@
             this.pages.Location = new System.Drawing.Point(264, 77);
             this.pages.Multiline = true;
             this.pages.Name = "pages";
-            this.pages.Page = this.Home;
-            this.pages.PageIndex = 0;
-            this.pages.PageName = "Home";
-            this.pages.PageTitle = "Home";
+            this.pages.Page = this.Setting;
+            this.pages.PageIndex = 7;
+            this.pages.PageName = "Setting";
+            this.pages.PageTitle = "Setting";
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
@@ -744,11 +744,10 @@
             // Expense
             // 
             this.Expense.BackColor = System.Drawing.Color.Gainsboro;
-            this.Expense.Controls.Add(this.expensedgv);
-            this.Expense.Controls.Add(this.categorybtn);
+            this.Expense.Controls.Add(this.userdgv);
             this.Expense.Controls.Add(this.usertxt);
-            this.Expense.Controls.Add(this.deleteexpensebtn);
-            this.Expense.Controls.Add(this.updateexpensebtn);
+            this.Expense.Controls.Add(this.deleteuserbtn);
+            this.Expense.Controls.Add(this.passwordbtn);
             this.Expense.Controls.Add(this.addexpensebtn);
             this.Expense.Location = new System.Drawing.Point(4, 4);
             this.Expense.Name = "Expense";
@@ -756,18 +755,18 @@
             this.Expense.TabIndex = 3;
             this.Expense.Text = "User";
             // 
-            // expensedgv
+            // userdgv
             // 
-            this.expensedgv.AllowUserToAddRows = false;
-            this.expensedgv.AllowUserToDeleteRows = false;
-            this.expensedgv.AllowUserToOrderColumns = true;
-            this.expensedgv.AllowUserToResizeRows = false;
+            this.userdgv.AllowUserToAddRows = false;
+            this.userdgv.AllowUserToDeleteRows = false;
+            this.userdgv.AllowUserToOrderColumns = true;
+            this.userdgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.expensedgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.expensedgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.expensedgv.BackgroundColor = System.Drawing.Color.LightGray;
-            this.expensedgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.expensedgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.userdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.userdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.userdgv.BackgroundColor = System.Drawing.Color.LightGray;
+            this.userdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.userdgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -775,48 +774,23 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.expensedgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.expensedgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.expensedgv.DoubleBuffered = true;
-            this.expensedgv.EnableHeadersVisualStyles = false;
-            this.expensedgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            this.expensedgv.HeaderForeColor = System.Drawing.Color.White;
-            this.expensedgv.Location = new System.Drawing.Point(7, 97);
-            this.expensedgv.MultiSelect = false;
-            this.expensedgv.Name = "expensedgv";
-            this.expensedgv.ReadOnly = true;
-            this.expensedgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.expensedgv.RowHeadersWidth = 51;
-            this.expensedgv.RowTemplate.Height = 24;
-            this.expensedgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.expensedgv.Size = new System.Drawing.Size(1110, 683);
-            this.expensedgv.TabIndex = 16;
-            // 
-            // categorybtn
-            // 
-            this.categorybtn.AnimationHoverSpeed = 0.07F;
-            this.categorybtn.AnimationSpeed = 0.03F;
-            this.categorybtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.categorybtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.categorybtn.BorderColor = System.Drawing.Color.Black;
-            this.categorybtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.categorybtn.FocusedColor = System.Drawing.Color.Empty;
-            this.categorybtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categorybtn.ForeColor = System.Drawing.Color.Black;
-            this.categorybtn.Image = ((System.Drawing.Image)(resources.GetObject("categorybtn.Image")));
-            this.categorybtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.categorybtn.Location = new System.Drawing.Point(883, 8);
-            this.categorybtn.Name = "categorybtn";
-            this.categorybtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.categorybtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.categorybtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.categorybtn.OnHoverImage = null;
-            this.categorybtn.OnPressedColor = System.Drawing.Color.Black;
-            this.categorybtn.Size = new System.Drawing.Size(235, 40);
-            this.categorybtn.TabIndex = 15;
-            this.categorybtn.Text = "Category";
-            this.categorybtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.categorybtn.Click += new System.EventHandler(this.categorybtn_Click);
+            this.userdgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.userdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.userdgv.DoubleBuffered = true;
+            this.userdgv.EnableHeadersVisualStyles = false;
+            this.userdgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
+            this.userdgv.HeaderForeColor = System.Drawing.Color.White;
+            this.userdgv.Location = new System.Drawing.Point(7, 97);
+            this.userdgv.MultiSelect = false;
+            this.userdgv.Name = "userdgv";
+            this.userdgv.ReadOnly = true;
+            this.userdgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.userdgv.RowHeadersWidth = 51;
+            this.userdgv.RowTemplate.Height = 24;
+            this.userdgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.userdgv.Size = new System.Drawing.Size(1110, 683);
+            this.userdgv.TabIndex = 16;
+            this.userdgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.userdgv_CellFormatting);
             // 
             // usertxt
             // 
@@ -841,58 +815,59 @@
             this.usertxt.Size = new System.Drawing.Size(379, 35);
             this.usertxt.TabIndex = 13;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usertxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.usertxt_KeyPress);
             // 
-            // deleteexpensebtn
+            // deleteuserbtn
             // 
-            this.deleteexpensebtn.AnimationHoverSpeed = 0.07F;
-            this.deleteexpensebtn.AnimationSpeed = 0.03F;
-            this.deleteexpensebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.deleteexpensebtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.deleteexpensebtn.BorderColor = System.Drawing.Color.Black;
-            this.deleteexpensebtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.deleteexpensebtn.FocusedColor = System.Drawing.Color.Empty;
-            this.deleteexpensebtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteexpensebtn.ForeColor = System.Drawing.Color.Black;
-            this.deleteexpensebtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteexpensebtn.Image")));
-            this.deleteexpensebtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.deleteexpensebtn.Location = new System.Drawing.Point(591, 8);
-            this.deleteexpensebtn.Name = "deleteexpensebtn";
-            this.deleteexpensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.deleteexpensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.deleteexpensebtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.deleteexpensebtn.OnHoverImage = null;
-            this.deleteexpensebtn.OnPressedColor = System.Drawing.Color.Black;
-            this.deleteexpensebtn.Size = new System.Drawing.Size(235, 40);
-            this.deleteexpensebtn.TabIndex = 12;
-            this.deleteexpensebtn.Text = "Delete";
-            this.deleteexpensebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.deleteexpensebtn.Click += new System.EventHandler(this.deleteexpensebtn_Click);
+            this.deleteuserbtn.AnimationHoverSpeed = 0.07F;
+            this.deleteuserbtn.AnimationSpeed = 0.03F;
+            this.deleteuserbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.deleteuserbtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.deleteuserbtn.BorderColor = System.Drawing.Color.Black;
+            this.deleteuserbtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.deleteuserbtn.FocusedColor = System.Drawing.Color.Empty;
+            this.deleteuserbtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteuserbtn.ForeColor = System.Drawing.Color.Black;
+            this.deleteuserbtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteuserbtn.Image")));
+            this.deleteuserbtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.deleteuserbtn.Location = new System.Drawing.Point(881, 8);
+            this.deleteuserbtn.Name = "deleteuserbtn";
+            this.deleteuserbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.deleteuserbtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.deleteuserbtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.deleteuserbtn.OnHoverImage = null;
+            this.deleteuserbtn.OnPressedColor = System.Drawing.Color.Black;
+            this.deleteuserbtn.Size = new System.Drawing.Size(235, 40);
+            this.deleteuserbtn.TabIndex = 12;
+            this.deleteuserbtn.Text = "Delete";
+            this.deleteuserbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.deleteuserbtn.Click += new System.EventHandler(this.deleteexpensebtn_Click);
             // 
-            // updateexpensebtn
+            // passwordbtn
             // 
-            this.updateexpensebtn.AnimationHoverSpeed = 0.07F;
-            this.updateexpensebtn.AnimationSpeed = 0.03F;
-            this.updateexpensebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.updateexpensebtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.updateexpensebtn.BorderColor = System.Drawing.Color.Black;
-            this.updateexpensebtn.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.updateexpensebtn.FocusedColor = System.Drawing.Color.Empty;
-            this.updateexpensebtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateexpensebtn.ForeColor = System.Drawing.Color.Black;
-            this.updateexpensebtn.Image = ((System.Drawing.Image)(resources.GetObject("updateexpensebtn.Image")));
-            this.updateexpensebtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.updateexpensebtn.Location = new System.Drawing.Point(299, 8);
-            this.updateexpensebtn.Name = "updateexpensebtn";
-            this.updateexpensebtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.updateexpensebtn.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.updateexpensebtn.OnHoverForeColor = System.Drawing.Color.White;
-            this.updateexpensebtn.OnHoverImage = null;
-            this.updateexpensebtn.OnPressedColor = System.Drawing.Color.Black;
-            this.updateexpensebtn.Size = new System.Drawing.Size(235, 40);
-            this.updateexpensebtn.TabIndex = 11;
-            this.updateexpensebtn.Text = "Update";
-            this.updateexpensebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.updateexpensebtn.Click += new System.EventHandler(this.updateexpensebtn_Click);
+            this.passwordbtn.AnimationHoverSpeed = 0.07F;
+            this.passwordbtn.AnimationSpeed = 0.03F;
+            this.passwordbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.passwordbtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.passwordbtn.BorderColor = System.Drawing.Color.Black;
+            this.passwordbtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.passwordbtn.FocusedColor = System.Drawing.Color.Empty;
+            this.passwordbtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordbtn.ForeColor = System.Drawing.Color.Black;
+            this.passwordbtn.Image = ((System.Drawing.Image)(resources.GetObject("passwordbtn.Image")));
+            this.passwordbtn.ImageSize = new System.Drawing.Size(20, 20);
+            this.passwordbtn.Location = new System.Drawing.Point(444, 8);
+            this.passwordbtn.Name = "passwordbtn";
+            this.passwordbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.passwordbtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.passwordbtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.passwordbtn.OnHoverImage = null;
+            this.passwordbtn.OnPressedColor = System.Drawing.Color.Black;
+            this.passwordbtn.Size = new System.Drawing.Size(235, 40);
+            this.passwordbtn.TabIndex = 11;
+            this.passwordbtn.Text = "View Password";
+            this.passwordbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.passwordbtn.Click += new System.EventHandler(this.updateexpensebtn_Click);
             // 
             // addexpensebtn
             // 
@@ -1104,34 +1079,33 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(101)))), ((int)(((byte)(238)))));
-            this.gunaPanel1.Controls.Add(this.gunaComboBox1);
+            this.gunaPanel1.Controls.Add(this.controlcmd);
             this.gunaPanel1.Controls.Add(this.headerlbl);
             this.gunaPanel1.Location = new System.Drawing.Point(264, 0);
             this.gunaPanel1.Name = "gunaPanel1";
             this.gunaPanel1.Size = new System.Drawing.Size(1138, 76);
             this.gunaPanel1.TabIndex = 1;
             // 
-            // gunaComboBox1
+            // controlcmd
             // 
-            this.gunaComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaComboBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaComboBox1.BorderColor = System.Drawing.Color.Silver;
-            this.gunaComboBox1.BorderSize = 0;
-            this.gunaComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.gunaComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gunaComboBox1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gunaComboBox1.ForeColor = System.Drawing.Color.Black;
-            this.gunaComboBox1.FormattingEnabled = true;
-            this.gunaComboBox1.Items.AddRange(new object[] {
-            "John Doe"});
-            this.gunaComboBox1.Location = new System.Drawing.Point(922, 25);
-            this.gunaComboBox1.Name = "gunaComboBox1";
-            this.gunaComboBox1.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaComboBox1.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.gunaComboBox1.Size = new System.Drawing.Size(168, 31);
-            this.gunaComboBox1.StartIndex = 0;
-            this.gunaComboBox1.TabIndex = 1;
+            this.controlcmd.BackColor = System.Drawing.Color.Transparent;
+            this.controlcmd.BaseColor = System.Drawing.Color.White;
+            this.controlcmd.BorderColor = System.Drawing.Color.Silver;
+            this.controlcmd.BorderSize = 0;
+            this.controlcmd.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.controlcmd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.controlcmd.FocusedColor = System.Drawing.Color.Empty;
+            this.controlcmd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.controlcmd.ForeColor = System.Drawing.Color.Black;
+            this.controlcmd.FormattingEnabled = true;
+            this.controlcmd.Location = new System.Drawing.Point(922, 25);
+            this.controlcmd.Name = "controlcmd";
+            this.controlcmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.controlcmd.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.controlcmd.Size = new System.Drawing.Size(168, 31);
+            this.controlcmd.StartIndex = 0;
+            this.controlcmd.TabIndex = 1;
+            this.controlcmd.SelectedIndexChanged += new System.EventHandler(this.controlcmd_SelectedIndexChanged);
             // 
             // headerlbl
             // 
@@ -1402,7 +1376,7 @@
             this.Budget.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.budgetdgv)).EndInit();
             this.Expense.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.expensedgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userdgv)).EndInit();
             this.Transaction.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transdgv)).EndInit();
             this.gunaPanel1.ResumeLayout(false);
@@ -1428,7 +1402,6 @@
         private Guna.UI.WinForms.GunaButton incomebtn;
         private Guna.UI.WinForms.GunaButton homebtn;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
-        private Guna.UI.WinForms.GunaComboBox gunaComboBox1;
         private System.Windows.Forms.Label headerlbl;
         private Bunifu.UI.WinForms.BunifuPages pages;
         private System.Windows.Forms.TabPage Home;
@@ -1463,20 +1436,20 @@
         private Guna.UI.WinForms.GunaButton deletebudgetbtn;
         private Guna.UI.WinForms.GunaButton updatebudgetbtn;
         private Guna.UI.WinForms.GunaButton addbudgetdgv;
-        private Guna.UI.WinForms.GunaButton categorybtn;
         private Bunifu.Framework.UI.BunifuMaterialTextbox usertxt;
-        private Guna.UI.WinForms.GunaButton deleteexpensebtn;
-        private Guna.UI.WinForms.GunaButton updateexpensebtn;
+        private Guna.UI.WinForms.GunaButton deleteuserbtn;
+        private Guna.UI.WinForms.GunaButton passwordbtn;
         private Guna.UI.WinForms.GunaButton addexpensebtn;
         private Bunifu.Framework.UI.BunifuMaterialTextbox transtxt;
         private Guna.UI.WinForms.GunaButton transdelbtn;
         private Guna.UI.WinForms.GunaButton transeditbtn;
         private Guna.UI.WinForms.GunaButton transaddbtn;
         private Bunifu.Framework.UI.BunifuCustomDataGrid incomedgv;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid expensedgv;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid userdgv;
         private Bunifu.Framework.UI.BunifuCustomDataGrid budgetdgv;
         private Guna.UI.WinForms.GunaButton expensesviewbtn;
         private Bunifu.Framework.UI.BunifuCustomDataGrid transdgv;
+        internal Guna.UI.WinForms.GunaComboBox controlcmd;
     }
 }
 
