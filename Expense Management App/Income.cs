@@ -36,7 +36,7 @@ namespace Expense_Management_App
                     connection.Open();
                     if (amounttxt.Text != "")
                     {
-                        string insert = "Insert into income Values(NULL, @source, @amount, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
+                        string insert = "Insert into income Values(NULL, @source, @amount, '" + DateTime.Now.ToShortDateString() + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@source", sourcecmd.SelectedValue));

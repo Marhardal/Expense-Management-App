@@ -128,6 +128,12 @@
             this.userbtn = new Guna.UI.WinForms.GunaButton();
             this.incomebtn = new Guna.UI.WinForms.GunaButton();
             this.homebtn = new Guna.UI.WinForms.GunaButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pages.SuspendLayout();
             this.Home.SuspendLayout();
@@ -139,6 +145,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.Income.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).BeginInit();
             this.Budget.SuspendLayout();
@@ -206,10 +215,10 @@
             this.pages.Location = new System.Drawing.Point(264, 77);
             this.pages.Multiline = true;
             this.pages.Name = "pages";
-            this.pages.Page = this.Setting;
-            this.pages.PageIndex = 7;
-            this.pages.PageName = "Setting";
-            this.pages.PageTitle = "Setting";
+            this.pages.Page = this.Home;
+            this.pages.PageIndex = 0;
+            this.pages.PageName = "Home";
+            this.pages.PageTitle = "Home";
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
@@ -383,6 +392,8 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.label16);
+            this.panel5.Controls.Add(this.label17);
             this.panel5.Location = new System.Drawing.Point(767, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(349, 140);
@@ -391,6 +402,8 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Controls.Add(this.label15);
             this.panel4.Location = new System.Drawing.Point(395, 12);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(349, 140);
@@ -399,6 +412,8 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Location = new System.Drawing.Point(23, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(349, 140);
@@ -1730,6 +1745,63 @@
             this.homebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.homebtn.Click += new System.EventHandler(this.homebtn_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(7, 10);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(125, 25);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Total Income";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(335, 86);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Total Income";
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 44);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(335, 86);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Total Income";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(7, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(148, 25);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Total Expenses";
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 44);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(335, 86);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Total Income";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(7, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 25);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Balance";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1758,6 +1830,12 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.Income.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.incomedgv)).EndInit();
             this.Budget.ResumeLayout(false);
@@ -1864,6 +1942,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         internal Guna.UI.WinForms.GunaButton updatebtn;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 

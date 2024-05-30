@@ -528,12 +528,12 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Delete from Transaction where ID=@id";
+                    string insert = "Delete from Transactions where ID=@id";
                         DialogResult dialogResult = MessageBox.Show("Are you sure you want to Delete the Income Source?", "System Notification!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (dialogResult == DialogResult.Yes)
                         {
                             SQLiteCommand command = new SQLiteCommand(insert, connection);
-                            command.Parameters.Add(new SQLiteParameter("@id", incomedgv.CurrentRow.Cells[0].Value.ToString()));
+                            command.Parameters.Add(new SQLiteParameter("@id", transdgv.CurrentRow.Cells[0].Value.ToString()));
                             var execute = command.ExecuteNonQuery();
                             if (execute > 0)
                             {
