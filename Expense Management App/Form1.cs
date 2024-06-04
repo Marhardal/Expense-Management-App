@@ -749,5 +749,17 @@ namespace Expense_Management_App
                 MessageBox.Show("Encountered an error " + error.Message);
             }
         }
+
+        private void incomedgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == incomedgv.Columns["Date"].Index)
+            {
+                if (e.Value != null && e.Value is DateTime)
+                {
+                    DateTime date = (DateTime)e.Value;
+                    e.Value = date.ToString("dd-MMM-yyyy");
+                }
+            } 
+        }
     }
 }

@@ -35,6 +35,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,7 +45,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -63,6 +63,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ttlballbl = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.ttlmontlyexplbl = new System.Windows.Forms.Label();
@@ -134,9 +137,6 @@
             this.userbtn = new Guna.UI.WinForms.GunaButton();
             this.incomebtn = new Guna.UI.WinForms.GunaButton();
             this.homebtn = new Guna.UI.WinForms.GunaButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.ttlballbl = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pages.SuspendLayout();
             this.Home.SuspendLayout();
@@ -149,6 +149,7 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -166,7 +167,6 @@
             this.tabPage1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -221,10 +221,10 @@
             this.pages.Location = new System.Drawing.Point(264, 77);
             this.pages.Multiline = true;
             this.pages.Name = "pages";
-            this.pages.Page = this.Home;
-            this.pages.PageIndex = 0;
-            this.pages.PageName = "Home";
-            this.pages.PageTitle = "Home";
+            this.pages.Page = this.Income;
+            this.pages.PageIndex = 1;
+            this.pages.PageName = "Income";
+            this.pages.PageTitle = "Income";
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
@@ -406,6 +406,36 @@
             this.panel5.Size = new System.Drawing.Size(349, 140);
             this.panel5.TabIndex = 11;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(254, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(83, 25);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Balance";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ttlballbl
+            // 
+            this.ttlballbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ttlballbl.Location = new System.Drawing.Point(7, 55);
+            this.ttlballbl.Name = "ttlballbl";
+            this.ttlballbl.Size = new System.Drawing.Size(335, 77);
+            this.ttlballbl.TabIndex = 9;
+            this.ttlballbl.Text = "Income and Expense Chart";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(42, 38);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 10;
+            this.pictureBox3.TabStop = false;
+            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -538,6 +568,7 @@
             this.incomedgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.incomedgv.Size = new System.Drawing.Size(1110, 683);
             this.incomedgv.TabIndex = 9;
+            this.incomedgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.incomedgv_CellFormatting);
             // 
             // incometxt
             // 
@@ -1813,36 +1844,6 @@
             this.homebtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.homebtn.Click += new System.EventHandler(this.homebtn_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(254, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(83, 25);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "Balance";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ttlballbl
-            // 
-            this.ttlballbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ttlballbl.Location = new System.Drawing.Point(7, 55);
-            this.ttlballbl.Name = "ttlballbl";
-            this.ttlballbl.Size = new System.Drawing.Size(335, 77);
-            this.ttlballbl.TabIndex = 9;
-            this.ttlballbl.Text = "Income and Expense Chart";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(42, 38);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1873,6 +1874,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1895,7 +1897,6 @@
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
