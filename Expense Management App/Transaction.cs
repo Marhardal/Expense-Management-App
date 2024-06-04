@@ -92,7 +92,7 @@ namespace Expense_Management_App
                     connection.Open();
                     if (sourcecmd.SelectedIndex != 0 && (incomecmd.SelectedIndex != 0 || budgetcmd.SelectedIndex != 0))
                     {
-                        string insert = "Insert into Transactions Values(NULL, @budget,@income, @status, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
+                        string insert = "Insert into Transactions Values(NULL, @budget,@income, @status, '" + DateTime.Now.ToShortDateString() + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         if (incomecmd.SelectedIndex > 0 && budgetcmd.SelectedIndex == 0)
                         {
