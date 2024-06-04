@@ -35,7 +35,7 @@ namespace Expense_Management_App
                     dataTable.Load(dataReader);
                     incomecmd.DisplayMember = "Amount";
                     incomecmd.ValueMember = "ID";
-                    incomecmd.DataSource = dataTable;
+                    dataReader.Close();
                     connection.Close();
                 }
                 else
@@ -63,7 +63,7 @@ namespace Expense_Management_App
                     dataTable.Load(dataReader);
                     budgetcmd.DisplayMember = "Name";
                     budgetcmd.ValueMember = "ID";
-                    budgetcmd.DataSource = dataTable;
+                    dataReader.Close();
                     connection.Close();
                 }
                 else
@@ -90,13 +90,25 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    if (sourcecmd.SelectedIndex != 0)
+                    if (sourcecmd.SelectedIndex != 0 && (incomecmd.SelectedIndex != 0 || budgetcmd.SelectedIndex != 0))
                     {
-                        string insert = "Insert into Transactions Values(NULL, '0',@income, @status, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
+                        string insert = "Insert into Transactions Values(NULL, @budget,@income, @status, '" + DateTime.Now.ToString("dd/MMMM/yyyy") + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
-                        command.Parameters.Add(new SQLiteParameter("@budget", budgetcmd.SelectedValue));
-                        command.Parameters.Add(new SQLiteParameter("@income", incomecmd.SelectedValue));
-                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedItem));
+                        if (incomecmd.SelectedIndex > 0 && budgetcmd.SelectedIndex == 0)
+                        {
+                            command.Parameters.Add(new SQLiteParameter("@income", incomecmd.SelectedValue));
+                            command.Parameters.Add(new SQLiteParameter("@budget", null));
+                        }
+                        else if (incomecmd.SelectedIndex == 0 && budgetcmd.SelectedIndex > 0)
+                        {
+                            command.Parameters.Add(new SQLiteParameter("@income", null));
+                            command.Parameters.Add(new SQLiteParameter("@budget", budgetcmd.SelectedValue));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please make sure that you have choose either or budget drop box not both.");
+                        }
+                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedValue));
                         var execute = command.ExecuteNonQuery();
                         if (execute > 0)
                         {

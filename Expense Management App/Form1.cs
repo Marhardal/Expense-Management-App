@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using Microsoft.VisualBasic;
+using System.Globalization;
 
 namespace Expense_Management_App
 {
@@ -44,7 +45,7 @@ namespace Expense_Management_App
                 }
                 else
                 {
-                    MessageBox.Show("Connection to the database is closed");
+                    MessageBox.Show("Connection Closed");
                 }
             }
             catch (Exception error)
@@ -84,10 +85,6 @@ namespace Expense_Management_App
                     }
                     connection.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Connection to the database is closed");
-                }
             }
             catch (Exception error)
             {
@@ -119,10 +116,6 @@ namespace Expense_Management_App
                         userdgv.DataSource = dataTable;
                     }
                     connection.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Connection to the database is closed");
                 }
             }
             catch (Exception error)
@@ -161,10 +154,6 @@ namespace Expense_Management_App
                     }
                     connection.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Connection to the database is closed");
-                }
             }
             catch (Exception error)
             {
@@ -194,7 +183,65 @@ namespace Expense_Management_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            getmonthly();
+            getbalance();
+        }
 
+        void getmonthly()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    var today = DateTime.Now.ToString("yyyy-MM-dd");
+                    connection.Open();
+                    string query = "SELECT COALESCE(SUM(CASE WHEN Incomes IS NOT NULL THEN Amount ELSE 0 END), 0) AS Incomes," +
+                            "COALESCE(SUM(CASE WHEN Expenses IS NOT NULL THEN Amount ELSE 0 END), 0) AS Expenses, COALESCE(SUM(CASE WHEN Incomes IS NOT NULL THEN Amount ELSE 0 END), 0) -  " +
+                            "COALESCE(SUM(CASE WHEN Expenses IS NOT NULL THEN Amount ELSE 0 END), 0) AS Balance," +
+                            " strftime('%m-%Y', Date) AS MonthYear FROM all_trans WHERE Status = 'Completed' AND strftime('%m-%Y', Date)= strftime('%m-%Y', 'now')" +
+                            " ORDER BY MonthYear; ";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        ttlincomelbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[0]).ToString("C", new CultureInfo("en-MW"));
+                        ttlmontlyexplbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[1]).ToString("C", new CultureInfo("en-MW"));
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered an error "+error.Message);
+            }
+        }
+        
+        void getbalance()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "SELECT COALESCE(SUM(CASE WHEN Incomes IS NOT NULL THEN Amount ELSE 0 END), 0) - COALESCE(SUM(CASE WHEN Expenses IS NOT NULL " +
+                        "THEN Amount ELSE 0 END), 0) AS Balance FROM all_trans WHERE Status = 'Completed'; ";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        ttlballbl.Text = "You have a balance of " + Convert.ToDecimal(reader[0]).ToString("C", new CultureInfo("en-MW"));
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
         private void sourcebtn_Click(object sender, EventArgs e)
@@ -482,10 +529,14 @@ namespace Expense_Management_App
         private void transeditbtn_Click(object sender, EventArgs e)
         {
             Transaction trans = new Transaction();
-            trans.sourcecmd.SelectedValue = incomedgv.CurrentRow.Cells[5].Value.ToString();
-            trans.budgetcmd.SelectedValue = incomedgv.CurrentRow.Cells[1].Value.ToString();
-            trans.incomecmd.SelectedValue = incomedgv.CurrentRow.Cells[3].Value.ToString();
-            trans.id = incomedgv.CurrentRow.Cells[0].Value.ToString();
+            trans.incomecmd.Items.Add(transdgv.CurrentRow.Cells[2].Value.ToString());
+            trans.incomecmd.SelectedItem = transdgv.CurrentRow.Cells[2].Value.ToString();
+            trans.sourcecmd.SelectedItem = transdgv.CurrentRow.Cells[3].Value.ToString();
+            trans.budgetcmd.Items.Add(transdgv.CurrentRow.Cells[1].Value.ToString());
+            trans.budgetcmd.SelectedItem = transdgv.CurrentRow.Cells[1].Value.ToString();
+            trans.id = transdgv.CurrentRow.Cells[0].Value.ToString();
+            trans.incomecmd.Enabled = false;
+            trans.budgetcmd.Enabled = false;
             trans.Show();
         }
 
@@ -622,10 +673,6 @@ namespace Expense_Management_App
                     }
                     reader.Close();
                     connection.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Connection to the database is closed");
                 }
             }
             catch (Exception error)
