@@ -38,8 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.sourcecmd = new Guna.UI.WinForms.GunaComboBox();
-            this.budgetcmd = new Guna.UI.WinForms.GunaComboBox();
             this.incomecmd = new Guna.UI.WinForms.GunaComboBox();
+            this.budgetcmd = new Guna.UI.WinForms.GunaComboBox();
             this.SuspendLayout();
             // 
             // cancelbtn
@@ -196,28 +196,6 @@
             this.sourcecmd.StartIndex = 0;
             this.sourcecmd.TabIndex = 41;
             // 
-            // budgetcmd
-            // 
-            this.budgetcmd.BackColor = System.Drawing.Color.Transparent;
-            this.budgetcmd.BaseColor = System.Drawing.Color.White;
-            this.budgetcmd.BorderColor = System.Drawing.Color.Black;
-            this.budgetcmd.BorderSize = 1;
-            this.budgetcmd.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.budgetcmd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.budgetcmd.FocusedColor = System.Drawing.Color.Empty;
-            this.budgetcmd.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.budgetcmd.ForeColor = System.Drawing.Color.Black;
-            this.budgetcmd.FormattingEnabled = true;
-            this.budgetcmd.Items.AddRange(new object[] {
-            "Select a source of income."});
-            this.budgetcmd.Location = new System.Drawing.Point(13, 114);
-            this.budgetcmd.Name = "budgetcmd";
-            this.budgetcmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.budgetcmd.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.budgetcmd.Size = new System.Drawing.Size(390, 31);
-            this.budgetcmd.StartIndex = 0;
-            this.budgetcmd.TabIndex = 46;
-            // 
             // incomecmd
             // 
             this.incomecmd.BackColor = System.Drawing.Color.Transparent;
@@ -230,15 +208,35 @@
             this.incomecmd.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.incomecmd.ForeColor = System.Drawing.Color.Black;
             this.incomecmd.FormattingEnabled = true;
-            this.incomecmd.Items.AddRange(new object[] {
-            "Select a source of income."});
             this.incomecmd.Location = new System.Drawing.Point(13, 178);
             this.incomecmd.Name = "incomecmd";
             this.incomecmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.incomecmd.OnHoverItemForeColor = System.Drawing.Color.White;
             this.incomecmd.Size = new System.Drawing.Size(390, 31);
             this.incomecmd.StartIndex = 0;
-            this.incomecmd.TabIndex = 44;
+            this.incomecmd.TabIndex = 47;
+            this.incomecmd.Visible = false;
+            // 
+            // budgetcmd
+            // 
+            this.budgetcmd.BackColor = System.Drawing.Color.Transparent;
+            this.budgetcmd.BaseColor = System.Drawing.Color.White;
+            this.budgetcmd.BorderColor = System.Drawing.Color.Black;
+            this.budgetcmd.BorderSize = 1;
+            this.budgetcmd.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.budgetcmd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.budgetcmd.FocusedColor = System.Drawing.Color.Empty;
+            this.budgetcmd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.budgetcmd.ForeColor = System.Drawing.Color.Black;
+            this.budgetcmd.FormattingEnabled = true;
+            this.budgetcmd.Location = new System.Drawing.Point(12, 114);
+            this.budgetcmd.Name = "budgetcmd";
+            this.budgetcmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.budgetcmd.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.budgetcmd.Size = new System.Drawing.Size(390, 31);
+            this.budgetcmd.StartIndex = 0;
+            this.budgetcmd.TabIndex = 48;
+            this.budgetcmd.Visible = false;
             // 
             // Transaction
             // 
@@ -246,16 +244,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(415, 330);
             this.Controls.Add(this.budgetcmd);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.incomecmd);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sourcecmd);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addExpensebtn);
             this.Controls.Add(this.gunaButton2);
+            this.Controls.Add(this.addExpensebtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Transaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -276,7 +274,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         internal Guna.UI.WinForms.GunaComboBox sourcecmd;
-        internal Guna.UI.WinForms.GunaComboBox budgetcmd;
-        internal Guna.UI.WinForms.GunaComboBox incomecmd;
+        protected internal Guna.UI.WinForms.GunaComboBox incomecmd;
+        protected internal Guna.UI.WinForms.GunaComboBox budgetcmd;
     }
 }

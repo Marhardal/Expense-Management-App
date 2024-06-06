@@ -28,13 +28,35 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "SELECT ID, Amount FROM Income WHERE ID NOT IN (SELECT[Income ID] FROM Transactions);";
+                    string select = "SELECT ID, Amount FROM Income WHERE ID NOT IN (SELECT [Income ID] FROM Transactions)";
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataReader dataReader = command.ExecuteReader();
                     DataTable dataTable = new DataTable();
                     dataTable.Load(dataReader);
-                    incomecmd.DisplayMember = "Amount";
-                    incomecmd.ValueMember = "ID";
+                    if (dataTable.Rows.Count > 0 && budgetcmd.Items.Count == 0)
+                    {
+                        incomecmd.Show();
+                        incomecmd.DisplayMember = "Amount";
+                        incomecmd.ValueMember = "ID";
+                        incomecmd.DataSource = dataTable;
+                    }
+                    else if (dataTable.Rows.Count > 0 && budgetcmd.Items.Count > 0)
+                    {
+                        int inc = dataTable.Rows.Count;
+                        int budg = budgetcmd.Items.Count;
+                        if (inc > budg)
+                        {
+                            incomecmd.Show();
+                        }
+                        else
+                        {
+                            budgetcmd.Show();
+                        }
+                    }
+                    else
+                    {
+                        budgetcmd.Show();
+                    }
                     dataReader.Close();
                     connection.Close();
                 }
@@ -60,11 +82,33 @@ namespace Expense_Management_App
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataReader dataReader = command.ExecuteReader();
                     DataTable dataTable = new DataTable();
-                    dataTable.Load(dataReader);
-                    budgetcmd.DisplayMember = "Name";
-                    budgetcmd.ValueMember = "ID";
-                    dataReader.Close();
-                    connection.Close();
+                        dataTable.Load(dataReader);
+                    if (dataTable.Rows.Count > 0 && incomecmd.Items.Count == 0)
+                    {
+                        budgetcmd.Show();
+                        budgetcmd.DisplayMember = "Name";
+                        budgetcmd.ValueMember = "ID";
+                        budgetcmd.DataSource = dataTable;
+                    }
+                    else if (dataTable.Rows.Count > 0 && incomecmd.Items.Count > 0)
+                    {
+                        int inc = dataTable.Rows.Count;
+                        int budg = incomecmd.Items.Count;
+                        if (inc > budg)
+                        {
+                            budgetcmd.Show();
+                        }
+                        else
+                        {
+                            incomecmd.Show();
+                        }
+                    }
+                    else
+                    {
+                        incomecmd.Show();
+                    }
+                        dataReader.Close();
+                        connection.Close();
                 }
                 else
                 {
@@ -90,16 +134,16 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    if (sourcecmd.SelectedIndex != 0 && (incomecmd.SelectedIndex != 0 || budgetcmd.SelectedIndex != 0))
+                    if (sourcecmd.SelectedIndex > 0)
                     {
                         string insert = "Insert into Transactions Values(NULL, @budget,@income, @status, '" + DateTime.Now.ToShortDateString() + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
-                        if (incomecmd.SelectedIndex > 0 && budgetcmd.SelectedIndex == 0)
+                        if (incomecmd.SelectedValue != null && budgetcmd.SelectedValue == null)
                         {
                             command.Parameters.Add(new SQLiteParameter("@income", incomecmd.SelectedValue));
                             command.Parameters.Add(new SQLiteParameter("@budget", null));
                         }
-                        else if (incomecmd.SelectedIndex == 0 && budgetcmd.SelectedIndex > 0)
+                        else if (budgetcmd.SelectedValue != null && incomecmd.SelectedValue == null)
                         {
                             command.Parameters.Add(new SQLiteParameter("@income", null));
                             command.Parameters.Add(new SQLiteParameter("@budget", budgetcmd.SelectedValue));
@@ -108,7 +152,7 @@ namespace Expense_Management_App
                         {
                             MessageBox.Show("Please make sure that you have choose either or budget drop box not both.");
                         }
-                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedValue));
+                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedItem));
                         var execute = command.ExecuteNonQuery();
                         if (execute > 0)
                         {
@@ -142,13 +186,13 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Update Transactions set [Budget ID]=@budget, [Income ID]=@income, Status=@status where ID=@id";
+                    string insert = "Update Transactions set Status=@status, Date='"+DateTime.Now.ToShortDateString()+"' where ID=" + id;
                     if (id != null || id != "0")
                     {
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         command.Parameters.Add(new SQLiteParameter("@budget", budgetcmd.SelectedValue));
                         command.Parameters.Add(new SQLiteParameter("@income", incomecmd.SelectedValue));
-                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedValue));
+                        command.Parameters.Add(new SQLiteParameter("@status", sourcecmd.SelectedItem));
                         var execute = command.ExecuteNonQuery();
                         if (execute > 0)
                         {

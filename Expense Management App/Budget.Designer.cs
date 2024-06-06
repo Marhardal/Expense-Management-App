@@ -34,8 +34,6 @@
             this.nametxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.cancelbtn = new Guna.UI.WinForms.GunaButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.amounttxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaButton2 = new Guna.UI.WinForms.GunaButton();
@@ -93,7 +91,7 @@
             this.cancelbtn.ForeColor = System.Drawing.Color.Black;
             this.cancelbtn.Image = ((System.Drawing.Image)(resources.GetObject("cancelbtn.Image")));
             this.cancelbtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.cancelbtn.Location = new System.Drawing.Point(216, 440);
+            this.cancelbtn.Location = new System.Drawing.Point(216, 372);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.OnHoverBaseColor = System.Drawing.Color.DarkRed;
             this.cancelbtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -110,45 +108,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 223);
+            this.label4.Location = new System.Drawing.Point(13, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 24);
             this.label4.TabIndex = 36;
             this.label4.Text = "Description";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 24);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Amount";
-            // 
-            // amounttxt
-            // 
-            this.amounttxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.amounttxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.amounttxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.amounttxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.amounttxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.amounttxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.amounttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.amounttxt.HintForeColor = System.Drawing.Color.DimGray;
-            this.amounttxt.HintText = "Search for an Income.";
-            this.amounttxt.isPassword = false;
-            this.amounttxt.LineFocusedColor = System.Drawing.Color.Blue;
-            this.amounttxt.LineIdleColor = System.Drawing.Color.Gray;
-            this.amounttxt.LineMouseHoverColor = System.Drawing.Color.Blue;
-            this.amounttxt.LineThickness = 3;
-            this.amounttxt.Location = new System.Drawing.Point(17, 181);
-            this.amounttxt.Margin = new System.Windows.Forms.Padding(4);
-            this.amounttxt.MaxLength = 32767;
-            this.amounttxt.Name = "amounttxt";
-            this.amounttxt.Size = new System.Drawing.Size(390, 35);
-            this.amounttxt.TabIndex = 34;
-            this.amounttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label2
             // 
@@ -183,7 +147,7 @@
             this.gunaButton2.ForeColor = System.Drawing.Color.Black;
             this.gunaButton2.Image = ((System.Drawing.Image)(resources.GetObject("gunaButton2.Image")));
             this.gunaButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaButton2.Location = new System.Drawing.Point(12, 440);
+            this.gunaButton2.Location = new System.Drawing.Point(12, 372);
             this.gunaButton2.Name = "gunaButton2";
             this.gunaButton2.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.gunaButton2.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -210,7 +174,7 @@
             this.addbudgetbtn.ForeColor = System.Drawing.Color.Black;
             this.addbudgetbtn.Image = ((System.Drawing.Image)(resources.GetObject("addbudgetbtn.Image")));
             this.addbudgetbtn.ImageSize = new System.Drawing.Size(20, 20);
-            this.addbudgetbtn.Location = new System.Drawing.Point(13, 440);
+            this.addbudgetbtn.Location = new System.Drawing.Point(13, 372);
             this.addbudgetbtn.Name = "addbudgetbtn";
             this.addbudgetbtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.addbudgetbtn.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -233,7 +197,7 @@
             this.duedatedtp.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.duedatedtp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.duedatedtp.ForeColor = System.Drawing.Color.Black;
-            this.duedatedtp.Location = new System.Drawing.Point(16, 388);
+            this.duedatedtp.Location = new System.Drawing.Point(16, 320);
             this.duedatedtp.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.duedatedtp.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.duedatedtp.Name = "duedatedtp";
@@ -243,14 +207,14 @@
             this.duedatedtp.OnPressedColor = System.Drawing.Color.Black;
             this.duedatedtp.Size = new System.Drawing.Size(390, 35);
             this.duedatedtp.TabIndex = 44;
-            this.duedatedtp.Text = "Thursday, 23 May 2024";
-            this.duedatedtp.Value = new System.DateTime(2024, 5, 23, 8, 18, 16, 555);
+            this.duedatedtp.Text = "Tuesday, 4 June 2024";
+            this.duedatedtp.Value = new System.DateTime(2024, 6, 4, 0, 0, 0, 0);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 357);
+            this.label6.Location = new System.Drawing.Point(13, 289);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 24);
             this.label6.TabIndex = 45;
@@ -272,17 +236,17 @@
             this.desctxt.AutoIndentChars = false;
             this.desctxt.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\r\n^\\s*(case|default)\\s*[^:]*" +
     "(?<range>:)\\s*(?<range>[^;]+);";
-            this.desctxt.AutoScrollMinSize = new System.Drawing.Size(2, 18);
+            this.desctxt.AutoScrollMinSize = new System.Drawing.Size(0, 19);
             this.desctxt.BackBrush = null;
             this.desctxt.BackColor = System.Drawing.Color.Transparent;
             this.desctxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.desctxt.CharHeight = 18;
+            this.desctxt.CharHeight = 19;
             this.desctxt.CharWidth = 10;
             this.desctxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.desctxt.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.desctxt.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.desctxt.Font = new System.Drawing.Font("Courier New", 10.2F);
             this.desctxt.IsReplaceMode = false;
-            this.desctxt.Location = new System.Drawing.Point(17, 250);
+            this.desctxt.Location = new System.Drawing.Point(17, 182);
             this.desctxt.Name = "desctxt";
             this.desctxt.Paddings = new System.Windows.Forms.Padding(0);
             this.desctxt.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
@@ -290,13 +254,14 @@
             this.desctxt.ShowLineNumbers = false;
             this.desctxt.Size = new System.Drawing.Size(389, 104);
             this.desctxt.TabIndex = 46;
+            this.desctxt.WordWrap = true;
             this.desctxt.Zoom = 100;
             // 
             // Budget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 489);
+            this.ClientSize = new System.Drawing.Size(420, 424);
             this.Controls.Add(this.desctxt);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.duedatedtp);
@@ -304,12 +269,10 @@
             this.Controls.Add(this.nametxt);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.amounttxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gunaButton2);
             this.Controls.Add(this.addbudgetbtn);
+            this.Controls.Add(this.gunaButton2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Budget";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -327,8 +290,6 @@
         internal Bunifu.Framework.UI.BunifuMaterialTextbox nametxt;
         private Guna.UI.WinForms.GunaButton cancelbtn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        internal Bunifu.Framework.UI.BunifuMaterialTextbox amounttxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         internal Guna.UI.WinForms.GunaButton gunaButton2;

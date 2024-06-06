@@ -32,9 +32,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,14 +51,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.label3 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.piechart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.ttlballbl = new System.Windows.Forms.Label();
@@ -143,11 +140,10 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.piechart)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
@@ -221,10 +217,10 @@
             this.pages.Location = new System.Drawing.Point(264, 77);
             this.pages.Multiline = true;
             this.pages.Name = "pages";
-            this.pages.Page = this.Income;
-            this.pages.PageIndex = 1;
-            this.pages.PageName = "Income";
-            this.pages.PageTitle = "Income";
+            this.pages.Page = this.Home;
+            this.pages.PageIndex = 0;
+            this.pages.PageName = "Home";
+            this.pages.PageTitle = "Home";
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(1133, 825);
             this.pages.TabIndex = 2;
@@ -296,12 +292,20 @@
             // panel8
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.cartesianChart);
             this.panel8.Controls.Add(this.label3);
-            this.panel8.Controls.Add(this.chart1);
-            this.panel8.Location = new System.Drawing.Point(581, 158);
+            this.panel8.Location = new System.Drawing.Point(484, 158);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(535, 322);
+            this.panel8.Size = new System.Drawing.Size(632, 322);
             this.panel8.TabIndex = 9;
+            // 
+            // cartesianChart
+            // 
+            this.cartesianChart.Location = new System.Drawing.Point(14, 36);
+            this.cartesianChart.Name = "cartesianChart";
+            this.cartesianChart.Size = new System.Drawing.Size(605, 275);
+            this.cartesianChart.TabIndex = 2;
+            this.cartesianChart.Text = "cartesianChart1";
             // 
             // label3
             // 
@@ -312,22 +316,6 @@
             this.label3.Size = new System.Drawing.Size(250, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Budget Allocation Pie Chart";
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(13, 36);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(509, 277);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
             // 
             // panel7
             // 
@@ -363,10 +351,10 @@
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.chart2);
+            this.panel6.Controls.Add(this.piechart);
             this.panel6.Location = new System.Drawing.Point(23, 158);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(540, 322);
+            this.panel6.Size = new System.Drawing.Size(455, 322);
             this.panel6.TabIndex = 7;
             // 
             // label4
@@ -379,21 +367,21 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Income and Expense Chart";
             // 
-            // chart2
+            // piechart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(12, 36);
-            this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(509, 277);
-            this.chart2.TabIndex = 2;
-            this.chart2.Text = "chart2";
+            chartArea1.Name = "ChartArea1";
+            this.piechart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.piechart.Legends.Add(legend1);
+            this.piechart.Location = new System.Drawing.Point(12, 36);
+            this.piechart.Name = "piechart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.piechart.Series.Add(series1);
+            this.piechart.Size = new System.Drawing.Size(433, 277);
+            this.piechart.TabIndex = 2;
+            this.piechart.Text = "chart2";
             // 
             // panel5
             // 
@@ -1855,7 +1843,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "+++";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.pages.ResumeLayout(false);
@@ -1865,13 +1853,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.piechart)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1925,13 +1912,12 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart piechart;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
@@ -1996,6 +1982,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label ttlballbl;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private LiveCharts.WinForms.CartesianChart cartesianChart;
     }
 }
 

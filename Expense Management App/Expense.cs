@@ -56,7 +56,7 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "Select sum(Amount) From Expense WHERE [Budget ID] = " + id;
+                    string select = "Select COALESCE(sum(Amount), 0) From Expense WHERE [Budget ID] = " + id;
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataReader dataReader = command.ExecuteReader();
                     if (dataReader.HasRows)
@@ -213,6 +213,7 @@ namespace Expense_Management_App
         private void refreshbtn_Click(object sender, EventArgs e)
         {
             getexpense();
+            sumbudget();
         }
     }
 }

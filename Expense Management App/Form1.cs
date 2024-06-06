@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using Microsoft.VisualBasic;
 using System.Globalization;
+using LiveCharts.Wpf;
+using LiveCharts;
 
 namespace Expense_Management_App
 {
@@ -56,6 +58,8 @@ namespace Expense_Management_App
 
         private void homebtn_Click(object sender, EventArgs e)
         {
+            getbalance();
+            getmonthly();
             pages.SetPage("Home");
             headerlbl.Text = "Home";
         }
@@ -185,6 +189,63 @@ namespace Expense_Management_App
         {
             getmonthly();
             getbalance();
+            getexpenses();
+        }
+
+        void getexpenses()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    cartesianChart.Series.Clear();
+                    cartesianChart.AxisX.Clear();
+                    cartesianChart.AxisY.Clear();
+                    var series = new LineSeries
+                    {
+                        Title = "Expenses",
+                        Values = new ChartValues<double>(),
+                        DataLabels = true
+                    };
+                    cartesianChart.Series.Add(series);
+                    var xLabels = new List<string>();
+                    var yValues = new ChartValues<double>();
+                        connection.Open();
+                        string query = "SELECT cat.name as Name, sum(exp.Amount) as Total FROM Expense as exp, Category as cat " +
+                                       "WHERE cat.ID=exp.[Category ID] GROUP BY cat.name ORDER BY Total DESC LIMIT 5";
+                        using (var command = new SQLiteCommand(query, connection))
+                        {
+                            using (var reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    xLabels.Add(reader["Name"].ToString());
+                                    yValues.Add(Convert.ToDouble(reader["Total"]));
+                                }
+                            }
+                        }
+                    foreach (var value in yValues)
+                    {
+                        series.Values.Add(value);
+                    }
+                    cartesianChart.AxisX.Add(new Axis
+                    {
+                        Title = "Category",
+                        Labels = xLabels
+                    });
+                    cartesianChart.AxisY.Add(new Axis
+                    {
+                        Title = "Amount"
+                    });
+                    cartesianChart.LegendLocation = LegendLocation.Right;
+                    cartesianChart.Refresh();
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
         void getmonthly()
@@ -198,16 +259,27 @@ namespace Expense_Management_App
                     string query = "SELECT COALESCE(SUM(CASE WHEN Incomes IS NOT NULL THEN Amount ELSE 0 END), 0) AS Incomes," +
                             "COALESCE(SUM(CASE WHEN Expenses IS NOT NULL THEN Amount ELSE 0 END), 0) AS Expenses, COALESCE(SUM(CASE WHEN Incomes IS NOT NULL THEN Amount ELSE 0 END), 0) -  " +
                             "COALESCE(SUM(CASE WHEN Expenses IS NOT NULL THEN Amount ELSE 0 END), 0) AS Balance," +
-                            " strftime('%m-%Y', Date) AS MonthYear FROM all_trans WHERE Status = 'Completed' AND strftime('%m-%Y', Date)= strftime('%m-%Y', 'now')" +
+                            " strftime('%m-%Y', Date) AS MonthYear FROM all_trans WHERE Status = 'Completed'" +
                             " ORDER BY MonthYear; ";
                     SQLiteCommand command = new SQLiteCommand(query, connection);
                     SQLiteDataReader reader = command.ExecuteReader();
+                    piechart.Series[0].Points.Clear();
                     if (reader.HasRows)
                     {
                         reader.Read();
                         ttlincomelbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[0]).ToString("C", new CultureInfo("en-MW"));
                         ttlmontlyexplbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[1]).ToString("C", new CultureInfo("en-MW"));
+                        piechart.Series[0].Points.AddXY("Income", reader[0]);
+                        piechart.Series[0].Points[0].Color = Color.Green;
+                        piechart.Series[0].Points.AddXY("Expense", reader[1]);
+                        piechart.Series[0].Points[1].Color = Color.Red;
                     }
+                    piechart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+                    if (piechart.Titles.Equals(""))
+                    {
+                    piechart.Titles.Add("Income against Expense for this Month.");
+                    }
+                    piechart.Series[0].IsValueShownAsLabel = true;
                     reader.Close();
                     connection.Close();
                 }
@@ -442,9 +514,8 @@ namespace Expense_Management_App
         {
             Budget budget = new Budget();
             budget.nametxt.Text = budgetdgv.CurrentRow.Cells[2].Value.ToString();
-            budget.amounttxt.Text = budgetdgv.CurrentRow.Cells[3].Value.ToString();
-            budget.desctxt.Text = budgetdgv.CurrentRow.Cells[4].Value.ToString();
-            budget.duedatedtp.Value = Convert.ToDateTime(budgetdgv.CurrentRow.Cells[6].Value);
+            budget.desctxt.Text = budgetdgv.CurrentRow.Cells[3].Value.ToString();
+            budget.duedatedtp.Value = Convert.ToDateTime(budgetdgv.CurrentRow.Cells[5].Value);
             budget.id = budgetdgv.CurrentRow.Cells[0].Value.ToString();
             budget.gunaButton2.Visible = true;
             budget.gunaButton2.BringToFront();
@@ -529,14 +600,22 @@ namespace Expense_Management_App
         private void transeditbtn_Click(object sender, EventArgs e)
         {
             Transaction trans = new Transaction();
-            trans.incomecmd.Items.Add(transdgv.CurrentRow.Cells[2].Value.ToString());
-            trans.incomecmd.SelectedItem = transdgv.CurrentRow.Cells[2].Value.ToString();
+            if (transdgv.CurrentRow.Cells[1].Value.ToString() != null && transdgv.CurrentRow.Cells[2].Value.ToString() == null)
+            { 
+                trans.budgetcmd.SelectedItem = transdgv.CurrentRow.Cells[1].Value.ToString();
+                trans.budgetcmd.Show();
+            }
+            else if (transdgv.CurrentRow.Cells[2].Value.ToString() != null && transdgv.CurrentRow.Cells[1].Value.ToString() == null)
+            {
+                trans.incomecmd.SelectedItem = transdgv.CurrentRow.Cells[2].Value.ToString();
+                trans.incomecmd.Show();
+            }
             trans.sourcecmd.SelectedItem = transdgv.CurrentRow.Cells[3].Value.ToString();
-            trans.budgetcmd.Items.Add(transdgv.CurrentRow.Cells[1].Value.ToString());
-            trans.budgetcmd.SelectedItem = transdgv.CurrentRow.Cells[1].Value.ToString();
             trans.id = transdgv.CurrentRow.Cells[0].Value.ToString();
             trans.incomecmd.Enabled = false;
             trans.budgetcmd.Enabled = false;
+            trans.gunaButton2.Show();
+            trans.gunaButton2.BringToFront();
             trans.Show();
         }
 
