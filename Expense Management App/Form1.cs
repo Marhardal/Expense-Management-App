@@ -185,11 +185,61 @@ namespace Expense_Management_App
             headerlbl.Text = "Setting";
         }
 
+        void recenttransaction()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "SELECT coalesce(expenses, incomes) as Name, Amount, date FROM all_trans WHERE Status='Completed' ORDER BY ID DESC LIMIT 5;";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        rectransdgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
+        void pendingtransaction()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "SELECT coalesce(expenses, incomes) as Name, Amount, date FROM all_trans WHERE Status='Completed' ORDER BY ID DESC LIMIT 5;";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        rectransdgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             getmonthly();
             getbalance();
             getexpenses();
+            recenttransaction();
         }
 
         void getexpenses()
@@ -212,7 +262,7 @@ namespace Expense_Management_App
                     var yValues = new ChartValues<double>();
                         connection.Open();
                         string query = "SELECT cat.name as Name, sum(exp.Amount) as Total FROM Expense as exp, Category as cat " +
-                                       "WHERE cat.ID=exp.[Category ID] GROUP BY cat.name ORDER BY Total DESC LIMIT 5";
+                                       "WHERE cat.ID=exp.[Category ID] GROUP BY cat.name ORDER BY Total DESC LIMIT 4";
                         using (var command = new SQLiteCommand(query, connection))
                         {
                             using (var reader = command.ExecuteReader())
@@ -263,23 +313,30 @@ namespace Expense_Management_App
                             " ORDER BY MonthYear; ";
                     SQLiteCommand command = new SQLiteCommand(query, connection);
                     SQLiteDataReader reader = command.ExecuteReader();
-                    piechart.Series[0].Points.Clear();
+                    SeriesCollection series = new SeriesCollection();
                     if (reader.HasRows)
                     {
                         reader.Read();
                         ttlincomelbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[0]).ToString("C", new CultureInfo("en-MW"));
                         ttlmontlyexplbl.Text = "This month you have made a Total Income of " + Convert.ToDecimal(reader[1]).ToString("C", new CultureInfo("en-MW"));
-                        piechart.Series[0].Points.AddXY("Income", reader[0]);
-                        piechart.Series[0].Points[0].Color = Color.Green;
-                        piechart.Series[0].Points.AddXY("Expense", reader[1]);
-                        piechart.Series[0].Points[1].Color = Color.Red;
+                        double incomes = Convert.ToDouble(reader["Incomes"]);
+                        double expenses = Convert.ToDouble(reader["Expenses"]);
+
+                        series.Add(new PieSeries
+                        {
+                            Title = "Incomes",
+                            Values = new ChartValues<double> { incomes },
+                            DataLabels = true
+                        });
+
+                        series.Add(new PieSeries
+                        {
+                            Title = "Expenses",
+                            Values = new ChartValues<double> { expenses },
+                            DataLabels = true
+                        });
                     }
-                    piechart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                    if (piechart.Titles.Equals(""))
-                    {
-                    piechart.Titles.Add("Income against Expense for this Month.");
-                    }
-                    piechart.Series[0].IsValueShownAsLabel = true;
+                    pieChart.Series = series;
                     reader.Close();
                     connection.Close();
                 }
