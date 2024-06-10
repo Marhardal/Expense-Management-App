@@ -35,13 +35,13 @@
             this.addExpensebtn = new Guna.UI.WinForms.GunaButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.amounttxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.nametxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label6 = new System.Windows.Forms.Label();
             this.qtttxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.amounttxt = new Guna.UI.WinForms.GunaNumeric();
             this.SuspendLayout();
             // 
             // gunaButton2
@@ -85,7 +85,7 @@
             this.sourcecmd.FormattingEnabled = true;
             this.sourcecmd.Items.AddRange(new object[] {
             "Select a source of income."});
-            this.sourcecmd.Location = new System.Drawing.Point(13, 345);
+            this.sourcecmd.Location = new System.Drawing.Point(13, 340);
             this.sourcecmd.Name = "sourcecmd";
             this.sourcecmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.sourcecmd.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -149,7 +149,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 313);
+            this.label4.Location = new System.Drawing.Point(13, 308);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 24);
             this.label4.TabIndex = 25;
@@ -164,30 +164,6 @@
             this.label3.Size = new System.Drawing.Size(76, 24);
             this.label3.TabIndex = 24;
             this.label3.Text = "Amount";
-            // 
-            // amounttxt
-            // 
-            this.amounttxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.amounttxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.amounttxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.amounttxt.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.amounttxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.amounttxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.amounttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.amounttxt.HintForeColor = System.Drawing.Color.DimGray;
-            this.amounttxt.HintText = "Search for an Income.";
-            this.amounttxt.isPassword = false;
-            this.amounttxt.LineFocusedColor = System.Drawing.Color.Blue;
-            this.amounttxt.LineIdleColor = System.Drawing.Color.Gray;
-            this.amounttxt.LineMouseHoverColor = System.Drawing.Color.Blue;
-            this.amounttxt.LineThickness = 3;
-            this.amounttxt.Location = new System.Drawing.Point(13, 195);
-            this.amounttxt.Margin = new System.Windows.Forms.Padding(4);
-            this.amounttxt.MaxLength = 32767;
-            this.amounttxt.Name = "amounttxt";
-            this.amounttxt.Size = new System.Drawing.Size(390, 35);
-            this.amounttxt.TabIndex = 23;
-            this.amounttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label2
             // 
@@ -247,7 +223,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 238);
+            this.label6.Location = new System.Drawing.Point(13, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 24);
             this.label6.TabIndex = 33;
@@ -269,7 +245,7 @@
             this.qtttxt.LineIdleColor = System.Drawing.Color.Gray;
             this.qtttxt.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.qtttxt.LineThickness = 3;
-            this.qtttxt.Location = new System.Drawing.Point(13, 270);
+            this.qtttxt.Location = new System.Drawing.Point(13, 265);
             this.qtttxt.Margin = new System.Windows.Forms.Padding(4);
             this.qtttxt.MaxLength = 32767;
             this.qtttxt.Name = "qtttxt";
@@ -277,11 +253,28 @@
             this.qtttxt.TabIndex = 32;
             this.qtttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
+            // amounttxt
+            // 
+            this.amounttxt.BaseColor = System.Drawing.Color.White;
+            this.amounttxt.BorderColor = System.Drawing.Color.Black;
+            this.amounttxt.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.amounttxt.ButtonForeColor = System.Drawing.Color.White;
+            this.amounttxt.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.amounttxt.ForeColor = System.Drawing.Color.Black;
+            this.amounttxt.Location = new System.Drawing.Point(13, 195);
+            this.amounttxt.Maximum = ((long)(9999999));
+            this.amounttxt.Minimum = ((long)(0));
+            this.amounttxt.Name = "amounttxt";
+            this.amounttxt.Size = new System.Drawing.Size(390, 30);
+            this.amounttxt.TabIndex = 34;
+            this.amounttxt.Value = ((long)(0));
+            // 
             // Upsertexpense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 431);
+            this.Controls.Add(this.amounttxt);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.qtttxt);
             this.Controls.Add(this.label5);
@@ -290,11 +283,10 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.amounttxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gunaButton2);
             this.Controls.Add(this.addExpensebtn);
+            this.Controls.Add(this.gunaButton2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Upsertexpense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -313,12 +305,12 @@
         private Guna.UI.WinForms.GunaButton addExpensebtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        internal Bunifu.Framework.UI.BunifuMaterialTextbox amounttxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         internal Bunifu.Framework.UI.BunifuMaterialTextbox nametxt;
         private System.Windows.Forms.Label label6;
         internal Bunifu.Framework.UI.BunifuMaterialTextbox qtttxt;
+        protected internal Guna.UI.WinForms.GunaNumeric amounttxt;
     }
 }

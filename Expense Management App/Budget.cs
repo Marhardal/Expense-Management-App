@@ -23,7 +23,7 @@ namespace Expense_Management_App
 
         private void Budget_Load(object sender, EventArgs e)
         {
-            duedatedtp.Value = DateTime.Now;
+
         }
 
         private void addbudgetbtn_Click(object sender, EventArgs e)
@@ -35,11 +35,11 @@ namespace Expense_Management_App
                     connection.Open();
                     if (nametxt.Text != "" & desctxt.Text != "")
                     {
-                        string insert = "Insert into budget Values(NULL, 1 , @name, @desc, '" + DateTime.Now.ToShortDateString() + "', @due)";
+                        string insert = "Insert into budget Values(NULL, 1 , @name, @desc, @amo, '" + DateTime.Now.ToShortDateString() + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@desc", desctxt.Text));
-                        command.Parameters.Add(new SQLiteParameter("@due", duedatedtp.Value.ToString("dd/MMMM/yyyy")));
+                        command.Parameters.Add(new SQLiteParameter("@amo", amnttxt.Value));
                         var execute = command.ExecuteNonQuery();
                         if (execute > 0)
                         {
@@ -73,14 +73,14 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string insert = "Update budget set Name=@name, Description=@desc, [Due Date]=@due where ID=@id";
+                    string insert = "Update budget set Name=@name, Description=@desc, [Amount]=@amo where ID=@id";
                     if (id != null || id != "0" & nametxt.Text != "" & desctxt.Text != "")
                     {
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@desc", desctxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@id", id));
-                        command.Parameters.Add(new SQLiteParameter("@due", duedatedtp.Value.ToShortDateString()));
+                        command.Parameters.Add(new SQLiteParameter("@amo", amnttxt.Value));
                         var execute = command.ExecuteNonQuery();
                         if (execute > 0)
                         {

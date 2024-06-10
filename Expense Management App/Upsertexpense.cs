@@ -28,11 +28,11 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    if (amounttxt.Text != "")
+                    if (nametxt.Text != "" && qtttxt.Text != "" && amounttxt.Value != 0)
                     {
                         string insert = "Insert into expense Values(NULL, @category, "+ id + ",@name,@qtt, @amount, '" + DateTime.Now.ToShortDateString() + "')";
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
-                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
+                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Value));
                         command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@qtt", qtttxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@category", sourcecmd.SelectedValue));
@@ -112,7 +112,7 @@ namespace Expense_Management_App
                     {
                         SQLiteCommand command = new SQLiteCommand(insert, connection);
                         MessageBox.Show(sourcecmd.SelectedValue.ToString() + " " + amounttxt.Text);
-                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Text));
+                        command.Parameters.Add(new SQLiteParameter("@amount", amounttxt.Value));
                         command.Parameters.Add(new SQLiteParameter("@name", nametxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@qtt", qtttxt.Text));
                         command.Parameters.Add(new SQLiteParameter("@category", sourcecmd.SelectedValue));

@@ -242,6 +242,23 @@ namespace Expense_Management_App
             recenttransaction();
         }
 
+        void pendingnotifications()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string query = "";
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
         void getexpenses()
         {
             try
@@ -326,14 +343,16 @@ namespace Expense_Management_App
                         {
                             Title = "Incomes",
                             Values = new ChartValues<double> { incomes },
-                            DataLabels = true
+                            DataLabels = true,
+                            LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})"
                         });
 
                         series.Add(new PieSeries
                         {
                             Title = "Expenses",
                             Values = new ChartValues<double> { expenses },
-                            DataLabels = true
+                            DataLabels = true,
+                            LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})"
                         });
                     }
                     pieChart.Series = series;
@@ -572,7 +591,7 @@ namespace Expense_Management_App
             Budget budget = new Budget();
             budget.nametxt.Text = budgetdgv.CurrentRow.Cells[2].Value.ToString();
             budget.desctxt.Text = budgetdgv.CurrentRow.Cells[3].Value.ToString();
-            budget.duedatedtp.Value = Convert.ToDateTime(budgetdgv.CurrentRow.Cells[5].Value);
+            budget.amnttxt.Text = budgetdgv.CurrentRow.Cells[4].Value.ToString();
             budget.id = budgetdgv.CurrentRow.Cells[0].Value.ToString();
             budget.gunaButton2.Visible = true;
             budget.gunaButton2.BringToFront();

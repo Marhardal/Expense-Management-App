@@ -212,6 +212,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotiCreate.cs" />
     <Compile Include="Transaction.cs">
       <SubType>Form</SubType>
     </Compile>
