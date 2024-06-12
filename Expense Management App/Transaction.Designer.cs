@@ -213,7 +213,6 @@
             this.incomecmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.incomecmd.OnHoverItemForeColor = System.Drawing.Color.White;
             this.incomecmd.Size = new System.Drawing.Size(390, 31);
-            this.incomecmd.StartIndex = 0;
             this.incomecmd.TabIndex = 47;
             this.incomecmd.Visible = false;
             // 
@@ -234,7 +233,6 @@
             this.budgetcmd.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.budgetcmd.OnHoverItemForeColor = System.Drawing.Color.White;
             this.budgetcmd.Size = new System.Drawing.Size(390, 31);
-            this.budgetcmd.StartIndex = 0;
             this.budgetcmd.TabIndex = 48;
             this.budgetcmd.Visible = false;
             // 

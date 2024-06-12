@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +12,8 @@ using Microsoft.VisualBasic;
 using System.Globalization;
 using LiveCharts.Wpf;
 using LiveCharts;
+using System.Windows.Media;
+using System.IO;
 
 namespace Expense_Management_App
 {
@@ -172,9 +173,36 @@ namespace Expense_Management_App
             headerlbl.Text = "Transaction";
         }
 
+        void getnotifications()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "SELECT * FROM Notification";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        notidgv.DataSource = dataTable;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void notibtn_Click(object sender, EventArgs e)
         {
+            getnotifications();
             pages.SetPage("Notification");
+            headerlbl.Text = "Notifications";
         }
 
         private void setibtn_Click(object sender, EventArgs e)
@@ -234,8 +262,46 @@ namespace Expense_Management_App
                 MessageBox.Show("Encountered this error " + error);
             }
         }
+
+        void notify()
+        {
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    string select = "SELECT * FROM notification;";
+                    SQLiteCommand command = new SQLiteCommand(select, connection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dataTable.Rows.Count; i++)
+                        {
+                            notifydgv.DataSource = dataTable;
+                        }
+                        //MessageBox.Show("You have " + dataTable.Rows.Count + " notifications.");
+                        notifyIcon1.Icon = new System.Drawing.Icon(Path.GetFullPath(@"C:\Users\Martin Harawa\source\repos\Expense Management App\Expense Management App\Icon\icons8_notification.ico"));
+                        notifyIcon1.Text = "";
+                        notifyIcon1.Visible = true;
+                        notifyIcon1.BalloonTipTitle = "Transaction Notification";
+                        notifyIcon1.BalloonTipText = "You have " + dataTable.Rows.Count + " transactional notifications. Please click here to view all notifications.";
+                        notifyIcon1.ShowBalloonTip(100); 
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Encountered this error " + error);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            notify();
             getmonthly();
             getbalance();
             getexpenses();
@@ -915,6 +981,12 @@ namespace Expense_Management_App
                     e.Value = date.ToString("dd-MMM-yyyy");
                 }
             } 
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            getnotifications();
+            pages.SetPage("Notification");
         }
     }
 }

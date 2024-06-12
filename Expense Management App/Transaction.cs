@@ -28,12 +28,12 @@ namespace Expense_Management_App
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    string select = "SELECT ID, Amount FROM Income WHERE ID NOT IN (SELECT [Income ID] FROM Transactions)";
+                    string select = "SELECT ID, Amount FROM Income I WHERE NOT EXISTS (SELECT 1 FROM Transactions T WHERE T.[Income ID] = I.ID);";
                     SQLiteCommand command = new SQLiteCommand(select, connection);
                     SQLiteDataReader dataReader = command.ExecuteReader();
                     DataTable dataTable = new DataTable();
                     dataTable.Load(dataReader);
-                    if (dataTable.Rows.Count > 0 && budgetcmd.Items.Count == 0)
+                    if (dataTable.Rows.Count > 0)
                     {
                         incomecmd.Show();
                         incomecmd.DisplayMember = "Amount";
